@@ -1,0 +1,6 @@
+{
+    "src": "./src/ts",
+    "dst": "./src/js",
+    "parser": "tsClassVue",
+    "generator": "jsVue"
+}

@@ -1,4 +1,5 @@
 <template>
+
     <div class="item-uploader clearfix">
         <Uploader
             ref="uploader"
@@ -14,77 +15,94 @@
             <div v-if="titleHint" class="title-hint">{{titleHint}}</div>
         </div>
     </div>
-</template>
 
-<script lang="ts">
+</template>
+<script lang="js">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import ItemTitle from '@/components/formRenderer/itemTitle.vue';
 import Uploader from '@/ts/components/uploader.vue';
 import { WechatUploaderComponent } from '@forzoom/uploader';
 
-@Component({
+export default {
     name: 'ItemUploader',
+
     components: {
         ItemTitle,
         Uploader,
     },
-})
-export default class ItemUploader extends Vue {
-    @Prop() public value?: ImageInfo | null;
-    @Prop({ type: String }) public title?: string;
-    @Prop({ type: String }) public titleHint?: string;
-    @Prop({ required: true, type: String }) public type!: string;
-    @Prop({ required: true, type: Function }) public httpRequest!: (imageInfo: ImageInfo, type: string) => ImageInfo | Promise<ImageInfo>;
-    @Prop({ type: Boolean }) public isError?: boolean;
 
-    public hasUploaded = true;
+    props: {
+        value: {},
+        title: { type: String },
+        titleHint: { type: String },
+        type: { required: true, type: String },
+        httpRequest: { required: true, type: Function },
+        isError: { type: Boolean },
+    },
 
-    /**
-     * 添加二维码
-     */
-    public onAdd({ image, serverId }: { image: string, serverId: string }) {
-        const imageInfo: ImageInfo = {
-            key: serverId,
-            url: image,
+    data: function data() {
+        return {
+            hasUploaded: true,
         };
+    },
 
-        this.upload(imageInfo);
-    }
-    /**
-     * 删除二维码
-     */
-    public onRemove() {
-        this.$emit('input', null);
-        this.hasUploaded = false;
-    }
+    computed: {},
+    watch: {},
 
-    public onLoad() {
-        this.$emit('load');
-    }
+    methods: {
+        /**
+         * 添加二维码
+         */
+        onAdd: function(
+            {
+                image,
+                serverId,
+            },
+        ) {
+            const imageInfo = {
+                key: serverId,
+                url: image,
+            };
 
-    public onFinish() {
-        this.$emit('finish');
-    }
+            this.upload(imageInfo);
+        },
 
-    /**
-     * 上传流程
-     */
-    public async upload(image: ImageInfo) {
-        const result = await this.httpRequest(image, this.type);
-        this.$emit('input', result);
-        this.hasUploaded = true;
-    }
+        /**
+         * 删除二维码
+         */
+        onRemove: function() {
+            this.$emit('input', null);
+            this.hasUploaded = false;
+        },
 
-    public mounted() {
+        onLoad: function() {
+            this.$emit('load');
+        },
+
+        onFinish: function() {
+            this.$emit('finish');
+        },
+
+        /**
+         * 上传流程
+         */
+        upload: async function(image) {
+            const result = await this.httpRequest(image, this.type);
+            this.$emit('input', result);
+            this.hasUploaded = true;
+        },
+    },
+
+    mounted: function() {
         if (this.value) {
             // @ts-ignore
             this.$refs.uploader.setImage(this.value.url);
         }
-    }
-}
+    },
+};
 </script>
-
 <style lang="less">
+
 @import "../../lib/style/mixins.less";
 
 .item-uploader {
@@ -116,4 +134,5 @@ export default class ItemUploader extends Vue {
         }
     }
 }
+
 </style>

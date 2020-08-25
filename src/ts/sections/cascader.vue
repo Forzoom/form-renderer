@@ -40,7 +40,6 @@ export default class ItemDistrict extends Vue {
 
     @Watch('ids')
     public onUpdateIds() {
-        console.log('target3');
         this.$emit('input', this.ids);
     }
 

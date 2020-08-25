@@ -181,7 +181,3 @@ export default class FormRenderer extends Vue {
     }
 }
 </script>
-
-<style lang="less">
-
-</style>

@@ -1,4 +1,5 @@
 <template>
+
     <div class="item-button-group">
         <div class="team-level-wrap clearfix">
             <div class="team-level-item fl"
@@ -15,27 +16,38 @@
             </div>
         </div>
     </div>
-</template>
 
-<script lang="ts">
+</template>
+<script lang="js">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
-@Component({
+export default {
     name: 'ItemButtonGroup',
-})
-export default class ItemButtonGroup extends Vue {
-    /** 内容 */
-    @Prop() public value!: any;
-    @Prop({ required: true, type: Array }) public options!: ValueText[];
-    @Prop({ type: Boolean, default: false }) public readonly!: boolean;
 
-    public onClickOption(option: ValueText) {
-        this.$emit('input', option.value);
-    }
-}
+    props: {
+        /** 内容 */
+        value: {},
+
+        options: { required: true, type: Array },
+        readonly: { type: Boolean, default: false },
+    },
+
+    data: function data() {
+        return {};
+    },
+
+    computed: {},
+    watch: {},
+
+    methods: {
+        onClickOption: function(option) {
+            this.$emit('input', option.value);
+        },
+    },
+};
 </script>
-
 <style lang="less">
+
 @import "../../lib/style/mixins.less";
 
 .item-button-group {
@@ -48,4 +60,5 @@ export default class ItemButtonGroup extends Vue {
         margin-right: 0;
     }
 }
+
 </style>

@@ -1,4 +1,5 @@
 <template>
+
     <div class="item-select" :class="{'is-error': isError}">
         <div class="single-line-left">
             <slot name="left"></slot>
@@ -17,48 +18,65 @@
             </select>
         </div>
     </div>
+
 </template>
-<script lang="ts">
+<script lang="js">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 
-@Component({
+export default {
     name: 'ItemSelect',
-})
-export default class ItemSelect extends Vue {
-    /** 内容 */
-    @Prop() public value!: any;
-    @Prop({ type: String }) public name!: string;
-    @Prop({ type: String }) public placeholder!: string;
-    /** 是否提示为空 */
-    @Prop({ type: Boolean, default: false }) public blank!: boolean;
-    /** 对齐 */
-    @Prop({ type: String, default: 'left' }) public align!: string;
-    /** 是否禁用 */
-    @Prop({ type: Boolean, default: false }) public disabled!: boolean;
-    /** 选择内容 */
-    @Prop({ type: Array, default() { return []; } }) public options!: ValueText[];
-    /** 是否错误 */
-    @Prop({ type: Boolean }) public isError?: boolean;
 
-    /** 内容 */
-    public content = '';
+    props: {
+        /** 内容 */
+        value: {},
 
-    @Watch('$props.value')
-    public onPropValueChange(val: any) {
-        this.content = val;
-    }
-    @Watch('content')
-    public onContentChange(val: string) {
-        this.$emit('input', val);
-    }
+        name: { type: String },
+        placeholder: { type: String },
 
-    public created() {
+        /** 是否提示为空 */
+        blank: { type: Boolean, default: false },
+
+        /** 对齐 */
+        align: { type: String, default: 'left' },
+
+        /** 是否禁用 */
+        disabled: { type: Boolean, default: false },
+
+        /** 选择内容 */
+        options: { type: Array, default() { return []; } },
+
+        /** 是否错误 */
+        isError: { type: Boolean },
+    },
+
+    data: function data() {
+        return {
+            /** 内容 */
+            content: '',
+        };
+    },
+
+    computed: {},
+
+    watch: {
+        '$props.value': function(val) {
+            this.content = val;
+        },
+
+        content: function(val) {
+            this.$emit('input', val);
+        },
+    },
+
+    methods: {},
+
+    created: function() {
         this.content = this.value;
-    }
-}
+    },
+};
 </script>
-
 <style lang="less">
+
 @import "../../lib/style/mixins.less";
 
 .item-select {
@@ -108,4 +126,5 @@ export default class ItemSelect extends Vue {
         }
     }
 }
+
 </style>

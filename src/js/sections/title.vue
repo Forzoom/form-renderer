@@ -1,35 +1,44 @@
 <template>
+
     <div class="item-title">
         {{title}}
         <span v-if="isRequired" class="primary-color">*</span>
         <span v-if="titleHint" class="tips">{{titleHint}}</span>
     </div>
+
 </template>
-<script lang="ts">
+<script lang="js">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
-@Component({
+export default {
     name: 'ItemTitle',
-})
-export default class ItemTitle extends Vue {
-    @Prop({
-        type: String,
-    })
-    public title: any;
 
-    @Prop({
-        type: String,
-    })
-    public titleHint: any;
+    props: {
+        title: {
+            type: String,
+        },
 
-    @Prop({
-        type: Boolean,
-        default: false,
-    })
-    public isRequired: any;
-}
+        titleHint: {
+            type: String,
+        },
+
+        isRequired: {
+            type: Boolean,
+            default: false,
+        },
+    },
+
+    data: function data() {
+        return {};
+    },
+
+    computed: {},
+    watch: {},
+    methods: {},
+};
 </script>
 <style lang="less">
+
 
 @import "../../lib/style/mixins.less";
 
@@ -43,5 +52,6 @@ export default class ItemTitle extends Vue {
         font-size: 12px;
     }
 }
+
 
 </style>
