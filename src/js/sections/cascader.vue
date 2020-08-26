@@ -12,7 +12,6 @@
 
 </template>
 <script lang="js">
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import Cascader from '../components/cascader.vue';
 
 export default {

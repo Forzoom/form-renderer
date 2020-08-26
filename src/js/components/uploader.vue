@@ -22,11 +22,6 @@
 
 </template>
 <script lang="js">
-import { Component, Vue, Prop } from 'vue-property-decorator';
-import {
-    WechatUploaderComponent, WechatImage,
-} from '@forzoom/uploader';
-
 /**
  * 班级头像上传逻辑
  *

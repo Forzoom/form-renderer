@@ -1,6 +1,6 @@
 <script lang="js">
-import { Component, Vue, Prop } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
+import Vue from 'vue';
 import ItemTitle from './sections/title.vue';
 import ItemInput from './sections/input.vue';
 import ItemSelect from './sections/select.vue';

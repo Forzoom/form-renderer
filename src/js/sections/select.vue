@@ -21,8 +21,6 @@
 
 </template>
 <script lang="js">
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-
 export default {
     name: 'ItemSelect',
 

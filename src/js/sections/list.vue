@@ -10,8 +10,6 @@
 
 </template>
 <script lang="js">
-import { Component, Vue, Prop } from 'vue-property-decorator';
-
 // import ListPopup from '@/components/popup/listPopup.vue';
 
 export default {

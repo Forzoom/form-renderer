@@ -62,8 +62,8 @@ module.exports = exports = [
     {
         input: './src/index.js',
         output: {
-            file: './dist/form-renderer.js',
-            name: 'LargeList',
+            file: './dist/form-renderer.umd.js',
+            name: 'FormRenderer',
             format: 'umd',
         },
         external: [ 'core-js', 'vue' ],

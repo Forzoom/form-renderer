@@ -18,7 +18,6 @@
 
 </template>
 <script lang="js">
-import { Component, Vue, Prop } from 'vue-property-decorator';
 import ItemTitle from './title.vue';
 import Uploader from '../components/uploader.vue';
 import { WechatUploaderComponent } from '@forzoom/uploader';
