@@ -5,20 +5,17 @@
             {{valueStr}}
         </div>
 
-        <ListPopup v-model="visible" :list="optionList" actionText="确认" :multiple="multiple" @action="onClickAction" />
+        <!-- <ListPopup v-model="visible" :list="optionList" actionText="确认" :multiple="multiple" @action="onClickAction" /> -->
     </div>
 
 </template>
 <script lang="js">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import ListPopup from '@/components/popup/listPopup.vue';
+
+// import ListPopup from '@/components/popup/listPopup.vue';
 
 export default {
     name: 'ItemList',
-
-    components: {
-        ListPopup,
-    },
 
     props: {
         value: {},

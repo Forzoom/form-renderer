@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import Cascader from '@/components/formRenderer/cascader.vue';
+import Cascader from '../components/cascader.vue';
 
 @Component({
     name: 'ItemCascader',

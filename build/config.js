@@ -16,7 +16,7 @@ module.exports = exports = [
             format: 'esm',
         },
         // 将部分依赖作为外置内容
-        external: [ 'core-js' ],
+        external: [ 'core-js', 'vue' ],
         plugins: [
             alias({
                 entries: [
@@ -35,51 +35,53 @@ module.exports = exports = [
         ],
     },
 
-    // {
-    //     input: './src/index.js',
-    //     output: {
-    //         file: './dist/form-renderer.cjs.js',
-    //         format: 'cjs',
-    //     },
-    //     external: [ 'core-js', 'vue' ],
-    //     plugins: [
-    //         resolve({
-    //             extensions,
-    //         }),
-    //         alias({
-    //             entries: [
-    //                 { find: '@', replacement: path.join(__dirname, '../src') }
-    //             ],
-    //         }),
-    //         commonjs(),
-    //         babel({
-    //             exclude: 'node_modules/**',
-    //             extensions,
-    //         }),
-    //     ],
-    // },
-    // {
-    //     input: './src/index.js',
-    //     output: {
-    //         file: './dist/form-renderer.js',
-    //         name: 'LargeList',
-    //         format: 'umd',
-    //     },
-    //     external: [ 'core-js', 'vue' ],
-    //     plugins: [
-    //         resolve({
-    //             extensions,
-    //         }),
-    //         alias({
-    //             entries: [
-    //                 { find: '@', replacement: path.join(__dirname, '../src') }
-    //             ],
-    //         }),
-    //         commonjs(),
-    //         babel({
-    //             exclude: 'node_modules/**',
-    //             extensions,
-    //         }),
-    //     ],
-    // },
+    {
+        input: './src/index.js',
+        output: {
+            file: './dist/form-renderer.cjs.js',
+            format: 'cjs',
+        },
+        external: [ 'core-js', 'vue' ],
+        plugins: [
+            resolve({
+                extensions,
+            }),
+            alias({
+                entries: [
+                    { find: '@', replacement: path.join(__dirname, '../src') }
+                ],
+            }),
+            vue(),
+            commonjs(),
+            babel({
+                exclude: 'node_modules/**',
+                extensions,
+            }),
+        ],
+    },
+    {
+        input: './src/index.js',
+        output: {
+            file: './dist/form-renderer.js',
+            name: 'LargeList',
+            format: 'umd',
+        },
+        external: [ 'core-js', 'vue' ],
+        plugins: [
+            resolve({
+                extensions,
+            }),
+            alias({
+                entries: [
+                    { find: '@', replacement: path.join(__dirname, '../src') }
+                ],
+            }),
+            vue(),
+            commonjs(),
+            babel({
+                exclude: 'node_modules/**',
+                extensions,
+            }),
+        ],
+    },
 ];

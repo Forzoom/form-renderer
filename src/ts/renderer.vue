@@ -1,16 +1,16 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
-import ItemTitle from '@/sections/title.vue';
-import ItemInput from '@/sections/input.vue';
-import ItemSelect from '@/sections/select.vue';
-import ItemCascader from '@/sections/cascader.vue';
-import ItemList from '@/sections/list.vue';
-import ItemButtonGroup from '@/sections/buttonGroup.vue';
-import ItemUploader from '@/sections/uploader.vue';
-import ItemTextarea from '@/sections/textarea.vue';
+import ItemTitle from './sections/title.vue';
+import ItemInput from './sections/input.vue';
+import ItemSelect from './sections/select.vue';
+import ItemCascader from './sections/cascader.vue';
+import ItemList from './sections/list.vue';
+import ItemButtonGroup from './sections/buttonGroup.vue';
+import ItemUploader from './sections/uploader.vue';
+import ItemTextarea from './sections/textarea.vue';
 import { isUndef } from '@/lib/utils';
-import { FormPageMeta, ValidateRule } from '@/types/form';
+import { FormPageMeta, ValidateRule } from '@/types/form.d.ts';
 
 @Component({
     name: 'Renderer',

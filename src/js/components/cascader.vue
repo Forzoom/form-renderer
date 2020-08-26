@@ -94,7 +94,7 @@ export default {
             // 如果最后一个districtId不存在情况下，表明当前没有任何级别被选中
             const lastId = this.lastId;
             // 如果最后一级的list不存在，那么返回false
-            if (isUndef(this.listMap[lastId!]) || !this.listMap[lastId!].length) {
+            if (isUndef(this.listMap[lastId]) || !this.listMap[lastId].length) {
                 return false;
             }
             if (isUndef(lastId)) {

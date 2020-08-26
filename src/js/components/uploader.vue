@@ -115,7 +115,7 @@ export default {
          *
          *  {image, serverId}
          */
-        onAdd: function(...args: WechatImage[]) {
+        onAdd: function(...args) {
             const $uploader = this.$refs.uploader;
             const images = $uploader.getImages();
             this.image = images[0].image;
@@ -127,7 +127,7 @@ export default {
          *
          *  {} 可能没有数据
          */
-        onRemove: function(...args: WechatImage[]) {
+        onRemove: function(...args) {
             this.image = null;
             this.$emit('remove', ...args);
         },
@@ -153,9 +153,9 @@ export default {
         margin-top: 30px;
     }
     &.blank {
-        border: 1px solid @primary-color;
+        border: 1px solid @color-red;
         .uploader-mock-background {
-            color: @primary-color;
+            color: @color-red;
         }
     }
     .icon {
