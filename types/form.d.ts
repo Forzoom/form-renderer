@@ -1,34 +1,21 @@
-import { CombinedVueInstance } from 'vue/types/vue';
-
-interface FormRendererData {
-    pageIndex: number;
-}
-interface FormRendererMethod {
-    prevPage(): boolean;
-    nextPage(): boolean;
-    isFirstPage(): boolean;
-    isLastPage(): boolean;
-    validate(): boolean;
-}
-
-interface ValidateRule {
+export interface ValidateRule {
     required?: boolean;
     trigger?: 'blur' | 'validate';
     message?: string;
 }
 
-interface FormPageMeta {
+export interface FormPageMeta {
     sections: FormSectionMeta[];
 }
 
-interface FormBasicSectionMeta {
+export interface FormBasicSectionMeta {
     type: string;
     key: string;
     titleComponent: boolean;
     validates?: ValidateRule[];
 }
 
-interface ItemInputMeta extends FormBasicSectionMeta {
+export interface ItemInputMeta extends FormBasicSectionMeta {
     type: 'ItemInput';
     titleComponent: true;
     props?: {
@@ -40,7 +27,7 @@ interface ItemInputMeta extends FormBasicSectionMeta {
     };
 }
 
-interface ItemSelectMeta extends FormBasicSectionMeta {
+export interface ItemSelectMeta extends FormBasicSectionMeta {
     type: 'ItemSelect';
     titleComponent: true;
     props?: {
@@ -51,7 +38,7 @@ interface ItemSelectMeta extends FormBasicSectionMeta {
     };
 }
 
-interface ItemCascaderMeta extends FormBasicSectionMeta {
+export interface ItemCascaderMeta extends FormBasicSectionMeta {
     type: 'ItemCascader';
     titleComponent: true;
     props: {
@@ -66,7 +53,7 @@ interface ItemCascaderMeta extends FormBasicSectionMeta {
     };
 }
 
-interface ItemListMeta extends FormBasicSectionMeta {
+export interface ItemListMeta extends FormBasicSectionMeta {
     type: 'ItemList';
     titleComponent: true;
     props?: {
@@ -79,7 +66,7 @@ interface ItemListMeta extends FormBasicSectionMeta {
     };
 }
 
-interface ItemTextareaMeta extends FormBasicSectionMeta {
+export interface ItemTextareaMeta extends FormBasicSectionMeta {
     type: 'ItemTextarea';
     titleComponent: true;
     props?: {
@@ -90,7 +77,7 @@ interface ItemTextareaMeta extends FormBasicSectionMeta {
     };
 }
 
-interface ItemButtonGroupMeta extends FormBasicSectionMeta {
+export interface ItemButtonGroupMeta extends FormBasicSectionMeta {
     type: 'ItemButtonGroup';
     titleComponent: true;
     props?: {
@@ -101,16 +88,29 @@ interface ItemButtonGroupMeta extends FormBasicSectionMeta {
     };
 }
 
-interface ItemUploaderMeta extends FormBasicSectionMeta {
+export interface ItemUploaderMeta extends FormBasicSectionMeta {
     type: 'ItemUploader';
     titleComponent: false;
     props: {
         title?: string;
         titleHint?: string;
-        type: string;
+        httpRequest: (imageInfo: ImageInfo) => ImageInfo | Promise<ImageInfo>;
     };
 }
 
-type FormSectionMeta = ItemInputMeta | ItemSelectMeta | ItemCascaderMeta | ItemListMeta | ItemTextareaMeta | ItemButtonGroupMeta | ItemUploaderMeta;
+export type FormSectionMeta = ItemInputMeta | ItemSelectMeta | ItemCascaderMeta | ItemListMeta | ItemTextareaMeta | ItemButtonGroupMeta | ItemUploaderMeta;
 
-type FormRendererComponent = CombinedVueInstance<Vue, FormRendererData, FormRendererMethod, object, object>;
+export interface ValueText {
+    value: any;
+    text: string;
+}
+
+export interface ImageInfo {
+    key: string;
+    url: string;
+}
+
+export interface CascaderItem {
+    id: number;
+    name: string;
+}

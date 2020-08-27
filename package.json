@@ -4,6 +4,7 @@
   "main": "dist/form-renderer.cjs.js",
   "module": "dist/form-renderer.esm.js",
   "license": "MIT",
+  "types": "./types/index.d.ts",
   "scripts": {
     "build": "node build/build.js"
   },

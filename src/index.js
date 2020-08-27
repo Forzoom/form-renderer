@@ -1,9 +1,9 @@
-export * as Renderer from './js/renderer.vue';
-export * as ItemButtonGroup from './js/sections/buttonGroup.vue';
-export * as ItemCascader from './js/sections/cascader.vue';
-export * as ItemInput from './js/sections/input.vue';
-export * as ItemList from './js/sections/list.vue';
-export * as ItemSelect from './js/sections/select.vue';
-export * as ItemTextarea from './js/sections/textarea.vue';
-export * as ItemTitle from './js/sections/title.vue';
-export * as ItemUploader from './js/sections/uploader.vue';
+export { default as Renderer } from './js/renderer.vue';
+export { default as ItemButtonGroup } from './js/sections/buttonGroup.vue';
+export { default as ItemCascader } from './js/sections/cascader.vue';
+export { default as ItemInput } from './js/sections/input.vue';
+export { default as ItemList } from './js/sections/list.vue';
+export { default as ItemSelect } from './js/sections/select.vue';
+export { default as ItemTextarea } from './js/sections/textarea.vue';
+export { default as ItemTitle } from './js/sections/title.vue';
+export { default as ItemUploader } from './js/sections/uploader.vue';

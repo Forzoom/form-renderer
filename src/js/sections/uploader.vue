@@ -34,7 +34,6 @@ export default {
         value: {},
         title: { type: String },
         titleHint: { type: String },
-        type: { required: true, type: String },
         httpRequest: { required: true, type: Function },
         isError: { type: Boolean },
     },
@@ -86,7 +85,7 @@ export default {
          * 上传流程
          */
         upload: async function(image) {
-            const result = await this.httpRequest(image, this.type);
+            const result = await this.httpRequest(image);
             this.$emit('input', result);
             this.hasUploaded = true;
         },

@@ -10,7 +10,7 @@ import ItemButtonGroup from './sections/buttonGroup.vue';
 import ItemUploader from './sections/uploader.vue';
 import ItemTextarea from './sections/textarea.vue';
 import { isUndef } from '@/lib/utils';
-import { FormPageMeta, ValidateRule } from '@/types/form.d.ts';
+import { FormPageMeta, ValidateRule } from '../../types/form';
 
 @Component({
     name: 'Renderer',

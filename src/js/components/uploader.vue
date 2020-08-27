@@ -175,7 +175,7 @@ export default {
                 width: 84px !important;
                 height: 23px !important;
                 left: 0;
-                bottom: 0;
+                top: 61px;
             }
             .ro-uploader-remove {
                 position: absolute;
@@ -184,7 +184,7 @@ export default {
                 line-height: 23px !important;
                 font-size: 14px !important;
                 left: 0;
-                top: 72 !important;
+                top: 0 !important;
                 color: #666;
                 background-color: rgba(0, 0, 0, 0.5) !important;
                 &:before {

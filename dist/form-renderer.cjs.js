@@ -406,11 +406,6 @@ var __vue_component__ = /*#__PURE__*/normalizeComponent({
   staticRenderFns: __vue_staticRenderFns__
 }, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, createInjector, undefined, undefined);
 
-var title = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': __vue_component__
-});
-
 var script$1 = {
   name: 'ItemInput',
   props: {
@@ -573,11 +568,6 @@ var __vue_component__$1 = /*#__PURE__*/normalizeComponent({
   staticRenderFns: __vue_staticRenderFns__$1
 }, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, false, createInjector, undefined, undefined);
 
-var input = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': __vue_component__$1
-});
-
 var script$2 = {
   name: 'ItemSelect',
   props: {
@@ -739,11 +729,6 @@ var __vue_component__$2 = /*#__PURE__*/normalizeComponent({
   render: __vue_render__$2,
   staticRenderFns: __vue_staticRenderFns__$2
 }, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, false, createInjector, undefined, undefined);
-
-var select = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': __vue_component__$2
-});
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -1941,11 +1926,6 @@ var __vue_component__$4 = /*#__PURE__*/normalizeComponent({
   staticRenderFns: __vue_staticRenderFns__$4
 }, __vue_inject_styles__$4, __vue_script__$4, __vue_scope_id__$4, __vue_is_functional_template__$4, __vue_module_identifier__$4, false, createInjector, undefined, undefined);
 
-var cascader = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': __vue_component__$4
-});
-
 // import ListPopup from '@/components/popup/listPopup.vue';
 var script$5 = {
   name: 'ItemList',
@@ -2066,11 +2046,6 @@ var __vue_component__$5 = /*#__PURE__*/normalizeComponent({
   staticRenderFns: __vue_staticRenderFns__$5
 }, __vue_inject_styles__$5, __vue_script__$5, __vue_scope_id__$5, __vue_is_functional_template__$5, __vue_module_identifier__$5, false, createInjector, undefined, undefined);
 
-var list = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': __vue_component__$5
-});
-
 var script$6 = {
   name: 'ItemButtonGroup',
   props: {
@@ -2174,11 +2149,6 @@ var __vue_component__$6 = /*#__PURE__*/normalizeComponent({
   render: __vue_render__$6,
   staticRenderFns: __vue_staticRenderFns__$6
 }, __vue_inject_styles__$6, __vue_script__$6, __vue_scope_id__$6, __vue_is_functional_template__$6, __vue_module_identifier__$6, false, createInjector, undefined, undefined);
-
-var buttonGroup = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': __vue_component__$6
-});
 
 /**
  * 班级头像上传逻辑
@@ -2355,15 +2325,15 @@ __vue_render__$7._withStripped = true;
 
 var __vue_inject_styles__$7 = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-e581edf0_0", {
-    source: ".form-renderer-uploader {\n  position: relative;\n  width: 84px;\n  height: 84px;\n  border-radius: 3px;\n  border: 1px solid #eaeaea;\n  background-color: #fafafa;\n  margin: 0 auto;\n  overflow: hidden;\n}\n.form-renderer-uploader .uploader-mock-background {\n  color: #000;\n  text-align: center;\n  margin-top: 30px;\n}\n.form-renderer-uploader.blank {\n  border: 1px solid #fc4548;\n}\n.form-renderer-uploader.blank .uploader-mock-background {\n  color: #fc4548;\n}\n.form-renderer-uploader .icon {\n  font-size: 23px;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-request.loaderImg {\n  width: 84px !important;\n  height: 84px !important;\n  margin-right: 0;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap {\n  position: relative;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-image.loaderImg {\n  width: 84px !important;\n  height: 84px !important;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .remove-wrapper {\n  position: absolute;\n  width: 84px !important;\n  height: 23px !important;\n  left: 0;\n  bottom: 0;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove {\n  position: absolute;\n  width: 84px !important;\n  height: 23px !important;\n  line-height: 23px !important;\n  font-size: 14px !important;\n  left: 0;\n  top: 72 !important;\n  color: #666;\n  background-color: rgba(0, 0, 0, 0.5) !important;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:before {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100% !important;\n  height: 0 !important;\n  content: '更换图片';\n  color: #fff;\n  font-size: 14px;\n  text-align: center;\n  transform: translate(-50%, -50%) rotate(0deg);\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:after {\n  width: 0 !important;\n  height: 0 !important;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:active {\n  border-color: #fff;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:active:before,\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:active:after {\n  background-color: #fff;\n}\n.form-renderer-uploader .loaderImg {\n  width: 84px !important;\n  height: 84px !important;\n}\n.form-renderer-uploader .upLoaderImg {\n  width: 84px;\n  height: 84px;\n  position: absolute;\n}\n.form-renderer-uploader .uploader-mock-background {\n  position: absolute;\n  top: 0;\n  width: 84px;\n  height: 84px;\n  text-align: center;\n}\n",
+  inject("data-v-79574556_0", {
+    source: ".form-renderer-uploader {\n  position: relative;\n  width: 84px;\n  height: 84px;\n  border-radius: 3px;\n  border: 1px solid #eaeaea;\n  background-color: #fafafa;\n  margin: 0 auto;\n  overflow: hidden;\n}\n.form-renderer-uploader .uploader-mock-background {\n  color: #000;\n  text-align: center;\n  margin-top: 30px;\n}\n.form-renderer-uploader.blank {\n  border: 1px solid #fc4548;\n}\n.form-renderer-uploader.blank .uploader-mock-background {\n  color: #fc4548;\n}\n.form-renderer-uploader .icon {\n  font-size: 23px;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-request.loaderImg {\n  width: 84px !important;\n  height: 84px !important;\n  margin-right: 0;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap {\n  position: relative;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-image.loaderImg {\n  width: 84px !important;\n  height: 84px !important;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .remove-wrapper {\n  position: absolute;\n  width: 84px !important;\n  height: 23px !important;\n  left: 0;\n  top: 61px;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove {\n  position: absolute;\n  width: 84px !important;\n  height: 23px !important;\n  line-height: 23px !important;\n  font-size: 14px !important;\n  left: 0;\n  top: 0 !important;\n  color: #666;\n  background-color: rgba(0, 0, 0, 0.5) !important;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:before {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100% !important;\n  height: 0 !important;\n  content: '更换图片';\n  color: #fff;\n  font-size: 14px;\n  text-align: center;\n  transform: translate(-50%, -50%) rotate(0deg);\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:after {\n  width: 0 !important;\n  height: 0 !important;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:active {\n  border-color: #fff;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:active:before,\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:active:after {\n  background-color: #fff;\n}\n.form-renderer-uploader .loaderImg {\n  width: 84px !important;\n  height: 84px !important;\n}\n.form-renderer-uploader .upLoaderImg {\n  width: 84px;\n  height: 84px;\n  position: absolute;\n}\n.form-renderer-uploader .uploader-mock-background {\n  position: absolute;\n  top: 0;\n  width: 84px;\n  height: 84px;\n  text-align: center;\n}\n",
     map: {
       "version": 3,
       "sources": ["uploader.vue"],
       "names": [],
-      "mappings": "AAAA;EACE,kBAAkB;EAClB,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,yBAAyB;EACzB,yBAAyB;EACzB,cAAc;EACd,gBAAgB;AAClB;AACA;EACE,WAAW;EACX,kBAAkB;EAClB,gBAAgB;AAClB;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,cAAc;AAChB;AACA;EACE,eAAe;AACjB;AACA;EACE,sBAAsB;EACtB,uBAAuB;EACvB,eAAe;AACjB;AACA;EACE,kBAAkB;AACpB;AACA;EACE,sBAAsB;EACtB,uBAAuB;AACzB;AACA;EACE,kBAAkB;EAClB,sBAAsB;EACtB,uBAAuB;EACvB,OAAO;EACP,SAAS;AACX;AACA;EACE,kBAAkB;EAClB,sBAAsB;EACtB,uBAAuB;EACvB,4BAA4B;EAC5B,0BAA0B;EAC1B,OAAO;EACP,kBAAkB;EAClB,WAAW;EACX,+CAA+C;AACjD;AACA;EACE,kBAAkB;EAClB,MAAM;EACN,QAAQ;EACR,sBAAsB;EACtB,oBAAoB;EACpB,eAAe;EACf,WAAW;EACX,eAAe;EACf,kBAAkB;EAClB,6CAA6C;AAC/C;AACA;EACE,mBAAmB;EACnB,oBAAoB;AACtB;AACA;EACE,kBAAkB;AACpB;AACA;;EAEE,sBAAsB;AACxB;AACA;EACE,sBAAsB;EACtB,uBAAuB;AACzB;AACA;EACE,WAAW;EACX,YAAY;EACZ,kBAAkB;AACpB;AACA;EACE,kBAAkB;EAClB,MAAM;EACN,WAAW;EACX,YAAY;EACZ,kBAAkB;AACpB",
+      "mappings": "AAAA;EACE,kBAAkB;EAClB,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,yBAAyB;EACzB,yBAAyB;EACzB,cAAc;EACd,gBAAgB;AAClB;AACA;EACE,WAAW;EACX,kBAAkB;EAClB,gBAAgB;AAClB;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,cAAc;AAChB;AACA;EACE,eAAe;AACjB;AACA;EACE,sBAAsB;EACtB,uBAAuB;EACvB,eAAe;AACjB;AACA;EACE,kBAAkB;AACpB;AACA;EACE,sBAAsB;EACtB,uBAAuB;AACzB;AACA;EACE,kBAAkB;EAClB,sBAAsB;EACtB,uBAAuB;EACvB,OAAO;EACP,SAAS;AACX;AACA;EACE,kBAAkB;EAClB,sBAAsB;EACtB,uBAAuB;EACvB,4BAA4B;EAC5B,0BAA0B;EAC1B,OAAO;EACP,iBAAiB;EACjB,WAAW;EACX,+CAA+C;AACjD;AACA;EACE,kBAAkB;EAClB,MAAM;EACN,QAAQ;EACR,sBAAsB;EACtB,oBAAoB;EACpB,eAAe;EACf,WAAW;EACX,eAAe;EACf,kBAAkB;EAClB,6CAA6C;AAC/C;AACA;EACE,mBAAmB;EACnB,oBAAoB;AACtB;AACA;EACE,kBAAkB;AACpB;AACA;;EAEE,sBAAsB;AACxB;AACA;EACE,sBAAsB;EACtB,uBAAuB;AACzB;AACA;EACE,WAAW;EACX,YAAY;EACZ,kBAAkB;AACpB;AACA;EACE,kBAAkB;EAClB,MAAM;EACN,WAAW;EACX,YAAY;EACZ,kBAAkB;AACpB",
       "file": "uploader.vue",
-      "sourcesContent": [".form-renderer-uploader {\n  position: relative;\n  width: 84px;\n  height: 84px;\n  border-radius: 3px;\n  border: 1px solid #eaeaea;\n  background-color: #fafafa;\n  margin: 0 auto;\n  overflow: hidden;\n}\n.form-renderer-uploader .uploader-mock-background {\n  color: #000;\n  text-align: center;\n  margin-top: 30px;\n}\n.form-renderer-uploader.blank {\n  border: 1px solid #fc4548;\n}\n.form-renderer-uploader.blank .uploader-mock-background {\n  color: #fc4548;\n}\n.form-renderer-uploader .icon {\n  font-size: 23px;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-request.loaderImg {\n  width: 84px !important;\n  height: 84px !important;\n  margin-right: 0;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap {\n  position: relative;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-image.loaderImg {\n  width: 84px !important;\n  height: 84px !important;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .remove-wrapper {\n  position: absolute;\n  width: 84px !important;\n  height: 23px !important;\n  left: 0;\n  bottom: 0;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove {\n  position: absolute;\n  width: 84px !important;\n  height: 23px !important;\n  line-height: 23px !important;\n  font-size: 14px !important;\n  left: 0;\n  top: 72 !important;\n  color: #666;\n  background-color: rgba(0, 0, 0, 0.5) !important;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:before {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100% !important;\n  height: 0 !important;\n  content: '更换图片';\n  color: #fff;\n  font-size: 14px;\n  text-align: center;\n  transform: translate(-50%, -50%) rotate(0deg);\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:after {\n  width: 0 !important;\n  height: 0 !important;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:active {\n  border-color: #fff;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:active:before,\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:active:after {\n  background-color: #fff;\n}\n.form-renderer-uploader .loaderImg {\n  width: 84px !important;\n  height: 84px !important;\n}\n.form-renderer-uploader .upLoaderImg {\n  width: 84px;\n  height: 84px;\n  position: absolute;\n}\n.form-renderer-uploader .uploader-mock-background {\n  position: absolute;\n  top: 0;\n  width: 84px;\n  height: 84px;\n  text-align: center;\n}\n"]
+      "sourcesContent": [".form-renderer-uploader {\n  position: relative;\n  width: 84px;\n  height: 84px;\n  border-radius: 3px;\n  border: 1px solid #eaeaea;\n  background-color: #fafafa;\n  margin: 0 auto;\n  overflow: hidden;\n}\n.form-renderer-uploader .uploader-mock-background {\n  color: #000;\n  text-align: center;\n  margin-top: 30px;\n}\n.form-renderer-uploader.blank {\n  border: 1px solid #fc4548;\n}\n.form-renderer-uploader.blank .uploader-mock-background {\n  color: #fc4548;\n}\n.form-renderer-uploader .icon {\n  font-size: 23px;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-request.loaderImg {\n  width: 84px !important;\n  height: 84px !important;\n  margin-right: 0;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap {\n  position: relative;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-image.loaderImg {\n  width: 84px !important;\n  height: 84px !important;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .remove-wrapper {\n  position: absolute;\n  width: 84px !important;\n  height: 23px !important;\n  left: 0;\n  top: 61px;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove {\n  position: absolute;\n  width: 84px !important;\n  height: 23px !important;\n  line-height: 23px !important;\n  font-size: 14px !important;\n  left: 0;\n  top: 0 !important;\n  color: #666;\n  background-color: rgba(0, 0, 0, 0.5) !important;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:before {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100% !important;\n  height: 0 !important;\n  content: '更换图片';\n  color: #fff;\n  font-size: 14px;\n  text-align: center;\n  transform: translate(-50%, -50%) rotate(0deg);\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:after {\n  width: 0 !important;\n  height: 0 !important;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:active {\n  border-color: #fff;\n}\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:active:before,\n.form-renderer-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-remove:active:after {\n  background-color: #fff;\n}\n.form-renderer-uploader .loaderImg {\n  width: 84px !important;\n  height: 84px !important;\n}\n.form-renderer-uploader .upLoaderImg {\n  width: 84px;\n  height: 84px;\n  position: absolute;\n}\n.form-renderer-uploader .uploader-mock-background {\n  position: absolute;\n  top: 0;\n  width: 84px;\n  height: 84px;\n  text-align: center;\n}\n"]
     },
     media: undefined
   });
@@ -3147,10 +3117,6 @@ var script$8 = {
     titleHint: {
       type: String
     },
-    type: {
-      required: true,
-      type: String
-    },
     httpRequest: {
       required: true,
       type: Function
@@ -3205,7 +3171,7 @@ var script$8 = {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return this.httpRequest(image, this.type);
+                return this.httpRequest(image);
 
               case 2:
                 result = _context.sent;
@@ -3277,7 +3243,7 @@ __vue_render__$8._withStripped = true;
 
 var __vue_inject_styles__$8 = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-459b9aaa_0", {
+  inject("data-v-1e7fa1ee_0", {
     source: ".item-uploader {\n  padding: 20px 0 0px;\n  text-align: center;\n}\n.item-uploader .ro-uploader-wrap {\n  width: 72px;\n  height: 72px;\n}\n.item-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-image.loaderImg {\n  background-size: cover;\n  background-position: center;\n}\n.item-uploader .code-title {\n  padding-right: 10px;\n  font-size: 14px;\n  line-height: 20px;\n  color: #101010;\n  text-align: left;\n  overflow: hidden;\n}\n.item-uploader .code-title .item-title {\n  padding: 6px 0 0px;\n}\n.item-uploader .code-title .title-hint {\n  margin-top: 4px;\n  color: #999;\n}\n",
     map: {
       "version": 3,
@@ -3308,11 +3274,6 @@ var __vue_component__$8 = /*#__PURE__*/normalizeComponent({
   render: __vue_render__$8,
   staticRenderFns: __vue_staticRenderFns__$8
 }, __vue_inject_styles__$8, __vue_script__$8, __vue_scope_id__$8, __vue_is_functional_template__$8, __vue_module_identifier__$8, false, createInjector, undefined, undefined);
-
-var uploader = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': __vue_component__$8
-});
 
 var script$9 = {
   name: 'ItemTextarea',
@@ -3447,11 +3408,6 @@ var __vue_component__$9 = /*#__PURE__*/normalizeComponent({
   render: __vue_render__$9,
   staticRenderFns: __vue_staticRenderFns__$9
 }, __vue_inject_styles__$9, __vue_script__$9, __vue_scope_id__$9, __vue_is_functional_template__$9, __vue_module_identifier__$9, false, createInjector, undefined, undefined);
-
-var textarea = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': __vue_component__$9
-});
 
 var script$a = {
   name: 'Renderer',
@@ -3730,17 +3686,12 @@ var __vue_is_functional_template__$a = undefined;
 
 var __vue_component__$a = /*#__PURE__*/normalizeComponent({}, __vue_inject_styles__$a, __vue_script__$a, __vue_scope_id__$a, __vue_is_functional_template__$a, __vue_module_identifier__$a, false, undefined, undefined, undefined);
 
-var renderer = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': __vue_component__$a
-});
-
-exports.ItemButtonGroup = buttonGroup;
-exports.ItemCascader = cascader;
-exports.ItemInput = input;
-exports.ItemList = list;
-exports.ItemSelect = select;
-exports.ItemTextarea = textarea;
-exports.ItemTitle = title;
-exports.ItemUploader = uploader;
-exports.Renderer = renderer;
+exports.ItemButtonGroup = __vue_component__$6;
+exports.ItemCascader = __vue_component__$4;
+exports.ItemInput = __vue_component__$1;
+exports.ItemList = __vue_component__$5;
+exports.ItemSelect = __vue_component__$2;
+exports.ItemTextarea = __vue_component__$9;
+exports.ItemTitle = __vue_component__;
+exports.ItemUploader = __vue_component__$8;
+exports.Renderer = __vue_component__$a;

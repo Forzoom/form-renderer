@@ -21,6 +21,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import ItemTitle from './title.vue';
 import Uploader from '../components/uploader.vue';
 import { WechatUploaderComponent } from '@forzoom/uploader';
+import { ImageInfo } from 'types/form';
 
 @Component({
     name: 'ItemUploader',
@@ -33,8 +34,7 @@ export default class ItemUploader extends Vue {
     @Prop() public value?: ImageInfo | null;
     @Prop({ type: String }) public title?: string;
     @Prop({ type: String }) public titleHint?: string;
-    @Prop({ required: true, type: String }) public type!: string;
-    @Prop({ required: true, type: Function }) public httpRequest!: (imageInfo: ImageInfo, type: string) => ImageInfo | Promise<ImageInfo>;
+    @Prop({ required: true, type: Function }) public httpRequest!: (imageInfo: ImageInfo) => ImageInfo | Promise<ImageInfo>;
     @Prop({ type: Boolean }) public isError?: boolean;
 
     public hasUploaded = true;
@@ -70,7 +70,7 @@ export default class ItemUploader extends Vue {
      * 上传流程
      */
     public async upload(image: ImageInfo) {
-        const result = await this.httpRequest(image, this.type);
+        const result = await this.httpRequest(image);
         this.$emit('input', result);
         this.hasUploaded = true;
     }
