@@ -22,6 +22,15 @@ describe('validate', () => {
         expect(checkValidate('122', rules)).to.not.be.undefined;
     });
 
+    it('max', () => {
+        const rules: ValidateRule[] = [ { max: 5 } ];
+        expect(checkValidate('12345', rules)).to.be.undefined;
+        expect(checkValidate(null, rules)).to.be.undefined;
+        expect(checkValidate('123456', rules)).to.not.be.undefined;
+        expect(checkValidate(5, rules)).to.be.undefined;
+        expect(checkValidate(5.1, rules)).to.not.be.undefined;
+    });
+
     it('require pattern', () => {
         const rules: ValidateRule[] = [ { required: true, pattern: /123/ } ];
         expect(checkValidate(null, rules)).to.not.be.undefined;

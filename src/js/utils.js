@@ -15,6 +15,11 @@ export function checkValidate(value, rules) {
             return rule;
         } else if (rule.pattern && value && !rule.pattern.test(value)) {
             return rule;
+        } else if (rule.max != null && value != null) {
+            const type = typeof value;
+            if ((type == 'string' && value.length > rule.max) || (type == 'number' && value > rule.max)) {
+                return rule;
+            }
         }
     }
 }

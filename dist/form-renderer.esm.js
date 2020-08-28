@@ -32,6 +32,22 @@ import 'core-js/modules/web.dom-collections.for-each';
 import 'core-js/modules/web.dom-collections.iterator';
 import 'core-js/modules/web.url';
 
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function (obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -1499,6 +1515,12 @@ function checkValidate(value, rules) {
         return rule;
       } else if (rule.pattern && value && !rule.pattern.test(value)) {
         return rule;
+      } else if (rule.max != null && value != null) {
+        var type = _typeof(value);
+
+        if (type == 'string' && value.length > rule.max || type == 'number' && value > rule.max) {
+          return rule;
+        }
       }
     }
   } catch (err) {
@@ -2370,20 +2392,20 @@ var __vue_component__$7 = /*#__PURE__*/normalizeComponent({
   staticRenderFns: __vue_staticRenderFns__$7
 }, __vue_inject_styles__$7, __vue_script__$7, __vue_scope_id__$7, __vue_is_functional_template__$7, __vue_module_identifier__$7, false, createInjector, undefined, undefined);
 
-function _typeof(obj) {
+function _typeof$1(obj) {
   "@babel/helpers - typeof";
 
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function (obj) {
+    _typeof$1 = function (obj) {
       return typeof obj;
     };
   } else {
-    _typeof = function (obj) {
+    _typeof$1 = function (obj) {
       return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
     };
   }
 
-  return _typeof(obj);
+  return _typeof$1(obj);
 }
 
 function createCommonjsModule$1(fn, module) {
@@ -2550,7 +2572,7 @@ var runtime_1$1 = createCommonjsModule$1(function (module) {
           var result = record.arg;
           var value = result.value;
 
-          if (value && _typeof(value) === "object" && hasOwn.call(value, "__await")) {
+          if (value && _typeof$1(value) === "object" && hasOwn.call(value, "__await")) {
             return PromiseImpl.resolve(value.__await).then(function (value) {
               invoke("next", value, resolve, reject);
             }, function (err) {
