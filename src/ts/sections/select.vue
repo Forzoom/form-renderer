@@ -1,5 +1,5 @@
 <template>
-    <div class="item-select" :class="{'is-error': isError}">
+    <div class="item-select" :class="{'is-error': isValidate}">
         <div class="single-line-left">
             <slot name="left"></slot>
         </div>
@@ -20,6 +20,7 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { ValueText } from 'types/form';
 
 @Component({
     name: 'ItemSelect',
@@ -38,7 +39,7 @@ export default class ItemSelect extends Vue {
     /** 选择内容 */
     @Prop({ type: Array, default() { return []; } }) public options!: ValueText[];
     /** 是否错误 */
-    @Prop({ type: Boolean }) public isError?: boolean;
+    @Prop({ type: Boolean }) public isValidate?: boolean;
 
     /** 内容 */
     public content = '';

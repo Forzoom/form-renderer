@@ -1,6 +1,6 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('core-js/modules/es.array.map'), require('vue'), require('vue-class-component'), require('core-js/modules/es.function.name'), require('core-js/modules/es.array.filter'), require('core-js/modules/es.array.join'), require('core-js/modules/es.array.slice'), require('core-js/modules/es.number.constructor'), require('core-js/modules/es.object.keys'), require('core-js/modules/es.array.concat'), require('core-js/modules/es.array.splice'), require('core-js/modules/es.symbol'), require('core-js/modules/es.symbol.description'), require('core-js/modules/es.symbol.async-iterator'), require('core-js/modules/es.symbol.iterator'), require('core-js/modules/es.symbol.to-string-tag'), require('core-js/modules/es.array.for-each'), require('core-js/modules/es.array.iterator'), require('core-js/modules/es.array.reverse'), require('core-js/modules/es.date.to-string'), require('core-js/modules/es.json.to-string-tag'), require('core-js/modules/es.math.to-string-tag'), require('core-js/modules/es.object.create'), require('core-js/modules/es.object.define-property'), require('core-js/modules/es.object.get-prototype-of'), require('core-js/modules/es.object.set-prototype-of'), require('core-js/modules/es.object.to-string'), require('core-js/modules/es.promise'), require('core-js/modules/es.regexp.to-string'), require('core-js/modules/es.string.iterator'), require('core-js/modules/web.dom-collections.for-each'), require('core-js/modules/web.dom-collections.iterator'), require('core-js/modules/web.url')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'core-js/modules/es.array.map', 'vue', 'vue-class-component', 'core-js/modules/es.function.name', 'core-js/modules/es.array.filter', 'core-js/modules/es.array.join', 'core-js/modules/es.array.slice', 'core-js/modules/es.number.constructor', 'core-js/modules/es.object.keys', 'core-js/modules/es.array.concat', 'core-js/modules/es.array.splice', 'core-js/modules/es.symbol', 'core-js/modules/es.symbol.description', 'core-js/modules/es.symbol.async-iterator', 'core-js/modules/es.symbol.iterator', 'core-js/modules/es.symbol.to-string-tag', 'core-js/modules/es.array.for-each', 'core-js/modules/es.array.iterator', 'core-js/modules/es.array.reverse', 'core-js/modules/es.date.to-string', 'core-js/modules/es.json.to-string-tag', 'core-js/modules/es.math.to-string-tag', 'core-js/modules/es.object.create', 'core-js/modules/es.object.define-property', 'core-js/modules/es.object.get-prototype-of', 'core-js/modules/es.object.set-prototype-of', 'core-js/modules/es.object.to-string', 'core-js/modules/es.promise', 'core-js/modules/es.regexp.to-string', 'core-js/modules/es.string.iterator', 'core-js/modules/web.dom-collections.for-each', 'core-js/modules/web.dom-collections.iterator', 'core-js/modules/web.url'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('core-js/modules/es.array.map'), require('vue'), require('vue-class-component'), require('core-js/modules/es.function.name'), require('core-js/modules/es.array.filter'), require('types/form'), require('core-js/modules/es.array.join'), require('core-js/modules/es.array.slice'), require('core-js/modules/es.number.constructor'), require('core-js/modules/es.object.keys'), require('core-js/modules/es.array.concat'), require('core-js/modules/es.array.splice'), require('core-js/modules/es.symbol'), require('core-js/modules/es.symbol.description'), require('core-js/modules/es.symbol.async-iterator'), require('core-js/modules/es.symbol.iterator'), require('core-js/modules/es.symbol.to-string-tag'), require('core-js/modules/es.array.for-each'), require('core-js/modules/es.array.iterator'), require('core-js/modules/es.array.reverse'), require('core-js/modules/es.date.to-string'), require('core-js/modules/es.json.to-string-tag'), require('core-js/modules/es.math.to-string-tag'), require('core-js/modules/es.object.create'), require('core-js/modules/es.object.define-property'), require('core-js/modules/es.object.get-prototype-of'), require('core-js/modules/es.object.set-prototype-of'), require('core-js/modules/es.object.to-string'), require('core-js/modules/es.promise'), require('core-js/modules/es.regexp.to-string'), require('core-js/modules/es.string.iterator'), require('core-js/modules/web.dom-collections.for-each'), require('core-js/modules/web.dom-collections.iterator'), require('core-js/modules/web.url')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'core-js/modules/es.array.map', 'vue', 'vue-class-component', 'core-js/modules/es.function.name', 'core-js/modules/es.array.filter', 'types/form', 'core-js/modules/es.array.join', 'core-js/modules/es.array.slice', 'core-js/modules/es.number.constructor', 'core-js/modules/es.object.keys', 'core-js/modules/es.array.concat', 'core-js/modules/es.array.splice', 'core-js/modules/es.symbol', 'core-js/modules/es.symbol.description', 'core-js/modules/es.symbol.async-iterator', 'core-js/modules/es.symbol.iterator', 'core-js/modules/es.symbol.to-string-tag', 'core-js/modules/es.array.for-each', 'core-js/modules/es.array.iterator', 'core-js/modules/es.array.reverse', 'core-js/modules/es.date.to-string', 'core-js/modules/es.json.to-string-tag', 'core-js/modules/es.math.to-string-tag', 'core-js/modules/es.object.create', 'core-js/modules/es.object.define-property', 'core-js/modules/es.object.get-prototype-of', 'core-js/modules/es.object.set-prototype-of', 'core-js/modules/es.object.to-string', 'core-js/modules/es.promise', 'core-js/modules/es.regexp.to-string', 'core-js/modules/es.string.iterator', 'core-js/modules/web.dom-collections.for-each', 'core-js/modules/web.dom-collections.iterator', 'core-js/modules/web.url'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FormRenderer = {}, null, global.Vue));
 }(this, (function (exports, es_array_map, Vue) { 'use strict';
 
@@ -359,7 +359,7 @@
 
   var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
     if (!inject) return;
-    inject("data-v-4ebe45b3_0", {
+    inject("data-v-5670a066_0", {
       source: ".item-title {\n  padding: 16px 0px;\n  font-size: 14px;\n  line-height: 18px;\n  font-weight: bold;\n}\n.item-title .tips {\n  color: #999;\n  font-size: 12px;\n}\n",
       map: {
         "version": 3,
@@ -408,8 +408,9 @@
       readonly: {
         type: Boolean
       },
-      isError: {
-        type: Boolean
+      isValidate: {
+        type: Boolean,
+        "default": true
       },
       parser: {
         type: Function
@@ -461,7 +462,7 @@
       }],
       staticClass: "item-input",
       "class": {
-        "is-error": _vm.isError
+        "is-error": _vm.isValidate
       },
       attrs: {
         type: "text",
@@ -491,7 +492,7 @@
       }],
       staticClass: "item-input",
       "class": {
-        "is-error": _vm.isError
+        "is-error": _vm.isValidate
       },
       attrs: {
         type: "tel",
@@ -521,7 +522,7 @@
 
   var __vue_inject_styles__$1 = function __vue_inject_styles__(inject) {
     if (!inject) return;
-    inject("data-v-2bbb02b3_0", {
+    inject("data-v-035dd313_0", {
       source: ".item-input {\n  width: 100%;\n  padding: 10px 15px;\n  font-size: 14px;\n  line-height: 25px;\n  background-color: #f2f2f2;\n  border-radius: 5px;\n  box-sizing: border-box;\n}\n.item-input::-webkit-input-placeholder {\n  color: #c8c8c8;\n}\n.item-input.is-error {\n  box-shadow: 0 0 1px 1px #fc4548;\n}\n",
       map: {
         "version": 3,
@@ -592,7 +593,7 @@
       },
 
       /** 是否错误 */
-      isError: {
+      isValidate: {
         type: Boolean
       }
     },
@@ -630,7 +631,7 @@
     return _c("div", {
       staticClass: "item-select",
       "class": {
-        "is-error": _vm.isError
+        "is-error": _vm.isValidate
       }
     }, [_c("div", {
       staticClass: "single-line-left"
@@ -683,7 +684,7 @@
 
   var __vue_inject_styles__$2 = function __vue_inject_styles__(inject) {
     if (!inject) return;
-    inject("data-v-329a60b4_0", {
+    inject("data-v-741f5f33_0", {
       source: ".item-select {\n  padding: 10px 15px;\n  font-size: 14px;\n  line-height: 25px;\n  background-color: #f2f2f2;\n  border: 1px solid transparent;\n  border-radius: 5px;\n  box-sizing: border-box;\n}\n.item-select.is-error {\n  box-shadow: 0 0 1px 1px #fc4548;\n}\n.item-select .select {\n  width: 100%;\n  line-height: 25px;\n  background-color: transparent;\n  box-sizing: border-box;\n}\n.item-select .select.padding-left {\n  padding-left: 10px;\n}\n.item-select .select.padding-right {\n  padding-right: 10px;\n}\n.item-select .select.left {\n  text-align: left;\n}\n.item-select .select.right {\n  text-align: right;\n}\n.item-select .select.center {\n  text-align: center;\n}\n.item-select .select.placeholder {\n  color: #c8c8c8;\n}\n.item-select.blank {\n  border-color: #fc4548;\n}\n.item-select.blank .input::-webkit-input-placeholder {\n  color: #fc4548;\n}\n",
       map: {
         "version": 3,
@@ -1808,8 +1809,9 @@
         required: true,
         type: Function
       },
-      isError: {
-        type: Boolean
+      isValidate: {
+        type: Boolean,
+        "default": true
       }
     },
     data: function data() {
@@ -1859,7 +1861,7 @@
     return _c("div", {
       staticClass: "item-district",
       "class": {
-        "is-error": _vm.isError
+        "is-error": _vm.isValidate
       }
     }, [_c("div", {
       staticClass: "item-district__inner",
@@ -1905,7 +1907,7 @@
 
   var __vue_inject_styles__$4 = function __vue_inject_styles__(inject) {
     if (!inject) return;
-    inject("data-v-39355c46_0", {
+    inject("data-v-5e332900_0", {
       source: ".item-district {\n  background-color: #f2f2f2;\n  border-radius: 5px;\n}\n.item-district.is-error {\n  box-shadow: 0 0 1px 1px #fc4548;\n}\n.item-district__inner {\n  padding: 10px 15px;\n  font-size: 14px;\n  line-height: 25px;\n}\n.item-district .placeholder {\n  color: #c8c8c8;\n}\n",
       map: {
         "version": 3,
@@ -1937,7 +1939,6 @@
     staticRenderFns: __vue_staticRenderFns__$4
   }, __vue_inject_styles__$4, __vue_script__$4, __vue_scope_id__$4, __vue_is_functional_template__$4, __vue_module_identifier__$4, false, createInjector, undefined, undefined);
 
-  // import ListPopup from '@/components/popup/listPopup.vue';
   var script$5 = {
     name: 'ItemList',
     props: {
@@ -2025,7 +2026,7 @@
 
   var __vue_inject_styles__$5 = function __vue_inject_styles__(inject) {
     if (!inject) return;
-    inject("data-v-6e93a3ac_0", {
+    inject("data-v-4b16282c_0", {
       source: ".item-list {\n  background-color: #f2f2f2;\n  border-radius: 5px;\n}\n.item-list__inner {\n  padding: 10px 15px;\n  font-size: 14px;\n  line-height: 25px;\n}\n.item-list .placeholder {\n  color: #c8c8c8;\n}\n",
       map: {
         "version": 3,
@@ -2129,7 +2130,7 @@
 
   var __vue_inject_styles__$6 = function __vue_inject_styles__(inject) {
     if (!inject) return;
-    inject("data-v-417872f7_0", {
+    inject("data-v-06ee5fb7_0", {
       source: ".item-button-group .team-level-item {\n  text-align: center;\n  margin-right: 10px;\n  margin-bottom: 5px;\n}\n.item-button-group .team-level-item:last-of-type {\n  margin-right: 0;\n}\n",
       map: {
         "version": 3,
@@ -3132,8 +3133,9 @@
         required: true,
         type: Function
       },
-      isError: {
-        type: Boolean
+      isValiate: {
+        type: Boolean,
+        "default": true
       }
     },
     data: function data() {
@@ -3229,7 +3231,7 @@
       ref: "uploader",
       staticClass: "fr",
       attrs: {
-        black: _vm.isError
+        black: !_vm.isValiate
       },
       on: {
         add: _vm.onAdd,
@@ -3254,7 +3256,7 @@
 
   var __vue_inject_styles__$8 = function __vue_inject_styles__(inject) {
     if (!inject) return;
-    inject("data-v-1e7fa1ee_0", {
+    inject("data-v-783e84d4_0", {
       source: ".item-uploader {\n  padding: 20px 0 0px;\n  text-align: center;\n}\n.item-uploader .ro-uploader-wrap {\n  width: 72px;\n  height: 72px;\n}\n.item-uploader .ro-uploader-wrap .ro-uploader-image-wrap .ro-uploader-image.loaderImg {\n  background-size: cover;\n  background-position: center;\n}\n.item-uploader .code-title {\n  padding-right: 10px;\n  font-size: 14px;\n  line-height: 20px;\n  color: #101010;\n  text-align: left;\n  overflow: hidden;\n}\n.item-uploader .code-title .item-title {\n  padding: 6px 0 0px;\n}\n.item-uploader .code-title .title-hint {\n  margin-top: 4px;\n  color: #999;\n}\n",
       map: {
         "version": 3,
@@ -3303,8 +3305,9 @@
       },
 
       /** is error */
-      isError: {
-        type: Boolean
+      isValidate: {
+        type: Boolean,
+        "default": true
       }
     },
     data: function data() {
@@ -3351,7 +3354,7 @@
     return _c("div", {
       staticClass: "item-textarea",
       "class": {
-        "is-error": _vm.isError
+        "is-error": _vm.isValidate
       }
     }, [_c("textarea", {
       directives: [{
@@ -3388,7 +3391,7 @@
 
   var __vue_inject_styles__$9 = function __vue_inject_styles__(inject) {
     if (!inject) return;
-    inject("data-v-6df09753_0", {
+    inject("data-v-78fc093f_0", {
       source: ".item-textarea {\n  background-color: #f2f2f2;\n}\n.item-textarea.is-error {\n  box-shadow: 0 0 1px 1px #fc4548;\n}\n.item-textarea .textarea {\n  width: 100%;\n  padding: 10px 15px;\n  font-size: 14px;\n  line-height: 25px;\n  background-color: transparent;\n  border-radius: 5px;\n  box-sizing: border-box;\n  resize: none;\n}\n.item-textarea .textarea::-webkit-input-placeholder {\n  color: #c8c8c8;\n}\n.item-textarea .length {\n  padding: 0px 15px 10px;\n  font-size: 12px;\n  line-height: 17px;\n  color: #999;\n  text-align: right;\n}\n",
       map: {
         "version": 3,

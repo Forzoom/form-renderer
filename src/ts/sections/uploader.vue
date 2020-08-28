@@ -3,7 +3,7 @@
         <Uploader
             ref="uploader"
             class="fr"
-            :black="isError"
+            :black="!isValiate"
             @add="onAdd"
             @remove="onRemove"
             @load="onLoad"
@@ -35,7 +35,7 @@ export default class ItemUploader extends Vue {
     @Prop({ type: String }) public title?: string;
     @Prop({ type: String }) public titleHint?: string;
     @Prop({ required: true, type: Function }) public httpRequest!: (imageInfo: ImageInfo) => ImageInfo | Promise<ImageInfo>;
-    @Prop({ type: Boolean }) public isError?: boolean;
+    @Prop({ type: Boolean, default: true }) public isValiate?: boolean;
 
     public hasUploaded = true;
 

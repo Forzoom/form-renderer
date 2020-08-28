@@ -1,6 +1,6 @@
 <template>
 
-    <div class="item-textarea" :class="{'is-error': isError}">
+    <div class="item-textarea" :class="{'is-error': isValidate}">
         <textarea class="textarea"
             v-model="content"
             :placeholder="placeholder"
@@ -11,6 +11,8 @@
 
 </template>
 <script lang="js">
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+
 export default {
     name: 'ItemTextarea',
 
@@ -25,7 +27,7 @@ export default {
         max: { type: Number },
 
         /** is error */
-        isError: { type: Boolean },
+        isValidate: { type: Boolean, default: true },
     },
 
     data: function data() {

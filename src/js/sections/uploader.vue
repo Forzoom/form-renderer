@@ -4,7 +4,7 @@
         <Uploader
             ref="uploader"
             class="fr"
-            :black="isError"
+            :black="!isValiate"
             @add="onAdd"
             @remove="onRemove"
             @load="onLoad"
@@ -18,9 +18,11 @@
 
 </template>
 <script lang="js">
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import ItemTitle from './title.vue';
 import Uploader from '../components/uploader.vue';
 import { WechatUploaderComponent } from '@forzoom/uploader';
+import { ImageInfo } from 'types/form';
 
 export default {
     name: 'ItemUploader',
@@ -35,7 +37,7 @@ export default {
         title: { type: String },
         titleHint: { type: String },
         httpRequest: { required: true, type: Function },
-        isError: { type: Boolean },
+        isValiate: { type: Boolean, default: true },
     },
 
     data: function data() {

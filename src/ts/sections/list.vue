@@ -10,6 +10,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
+import { ValueText } from 'types/form';
 // import ListPopup from '@/components/popup/listPopup.vue';
 
 @Component({

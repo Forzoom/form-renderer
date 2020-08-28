@@ -25,6 +25,7 @@ export interface ItemInputMeta extends FormBasicSectionMeta {
         title?: string;
         titleHint?: string;
         placeholder?: string;
+        type?: 'text' | 'tel';
         parser?: (str: string) => any;
         formatter?: (val: any) => string;
     };

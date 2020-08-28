@@ -2,7 +2,7 @@
     <div>
         <input v-if="type == 'text'"
             class="item-input"
-            :class="{ 'is-error': isError }"
+            :class="{ 'is-error': isValidate }"
             type="text"
             :name="name"
             :placeholder="placeholder"
@@ -11,7 +11,7 @@
             @blur="onBlur" />
         <input v-else-if="type == 'tel'"
             class="item-input"
-            :class="{ 'is-error': isError }"
+            :class="{ 'is-error': isValidate }"
             type="tel"
             :name="name"
             :placeholder="placeholder"
@@ -33,7 +33,7 @@ export default class ItemInput extends Vue {
     @Prop({ type: String }) public placeholder!: any;
     @Prop({ default: 'text' }) public type!: any;
     @Prop({ type: Boolean }) public readonly!: any;
-    @Prop({ type: Boolean }) public isError!: boolean;
+    @Prop({ type: Boolean, default: true }) public isValidate!: boolean;
     @Prop({ type: Function }) public parser: any;
     @Prop({ type: Function }) public formatter: any;
 

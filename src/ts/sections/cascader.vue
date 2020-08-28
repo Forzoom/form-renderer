@@ -1,5 +1,5 @@
 <template>
-    <div class="item-district" :class="{'is-error': isError}">
+    <div class="item-district" :class="{'is-error': isValidate}">
         <div class="item-district__inner" :class="{placeholder: name.length === 0}" @click="onClickDistrict">
             {{name || placeholder}}
         </div>
@@ -13,6 +13,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import Cascader from '../components/cascader.vue';
+import { CascaderItem } from 'types/form';
 
 @Component({
     name: 'ItemCascader',
@@ -26,7 +27,7 @@ export default class ItemDistrict extends Vue {
     @Prop({ required: true, type: Object }) public itemMap!: { [id: number]: CascaderItem };
     @Prop({ required: true, type: Object }) public listMap!: { [id: number]: CascaderItem[] };
     @Prop({ required: true, type: Function }) public fetchList!: (item: CascaderItem) => CascaderItem[] | Promise<CascaderItem[]>;
-    @Prop({ type: Boolean }) public isError?: boolean;
+    @Prop({ type: Boolean, default: true }) public isValidate?: boolean;
 
     public visible = false;
     public ids: number[] = [];

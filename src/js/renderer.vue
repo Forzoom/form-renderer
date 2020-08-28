@@ -146,7 +146,7 @@ export default {
                 h(section.type, {
                     props: {
                         value: this.innerForm[section.key],
-                        isError: !this.isValidate[section.key],
+                        isValidate: this.isValidate[section.key],
                         ...section.props,
                     },
                     on: {

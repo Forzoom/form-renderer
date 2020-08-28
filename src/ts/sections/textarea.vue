@@ -1,5 +1,5 @@
 <template>
-    <div class="item-textarea" :class="{'is-error': isError}">
+    <div class="item-textarea" :class="{'is-error': isValidate}">
         <textarea class="textarea"
             v-model="content"
             :placeholder="placeholder"
@@ -22,7 +22,7 @@ export default class ItemTextarea extends Vue {
     /** 最大长度 */
     @Prop({ type: Number }) public max!: any;
     /** is error */
-    @Prop({ type: Boolean }) public isError!: boolean;
+    @Prop({ type: Boolean, default: true }) public isValidate!: boolean;
 
     public content = '';
 
