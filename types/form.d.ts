@@ -1,5 +1,6 @@
 export interface ValidateRule {
     required?: boolean;
+    pattern?: RegExp;
     trigger?: 'blur' | 'validate';
     message?: string;
 }

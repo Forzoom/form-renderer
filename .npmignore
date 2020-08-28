@@ -1,4 +1,8 @@
 .DS_Store
-src
-node_modules
 build
+node_modules
+src
+.gitignore
+babel.config.js
+shuttle.config.json
+tsconfig.json

@@ -26,7 +26,7 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import {
     isUndef,
-} from '@/lib/utils';
+} from '../utils';
 
 /**
  * @update(names, ids) 数据更新

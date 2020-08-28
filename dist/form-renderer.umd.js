@@ -1,6 +1,6 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('core-js/modules/es.array.map'), require('vue'), require('core-js/modules/es.function.name'), require('core-js/modules/es.array.filter'), require('core-js/modules/es.array.join'), require('core-js/modules/es.array.slice'), require('core-js/modules/es.number.constructor'), require('core-js/modules/es.object.keys'), require('core-js/modules/es.array.concat'), require('core-js/modules/es.array.splice'), require('core-js/modules/es.symbol'), require('core-js/modules/es.symbol.description'), require('core-js/modules/es.symbol.async-iterator'), require('core-js/modules/es.symbol.iterator'), require('core-js/modules/es.symbol.to-string-tag'), require('core-js/modules/es.array.for-each'), require('core-js/modules/es.array.iterator'), require('core-js/modules/es.array.reverse'), require('core-js/modules/es.date.to-string'), require('core-js/modules/es.json.to-string-tag'), require('core-js/modules/es.math.to-string-tag'), require('core-js/modules/es.object.create'), require('core-js/modules/es.object.define-property'), require('core-js/modules/es.object.get-prototype-of'), require('core-js/modules/es.object.set-prototype-of'), require('core-js/modules/es.object.to-string'), require('core-js/modules/es.promise'), require('core-js/modules/es.regexp.to-string'), require('core-js/modules/es.string.iterator'), require('core-js/modules/web.dom-collections.for-each'), require('core-js/modules/web.dom-collections.iterator'), require('core-js/modules/web.url')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'core-js/modules/es.array.map', 'vue', 'core-js/modules/es.function.name', 'core-js/modules/es.array.filter', 'core-js/modules/es.array.join', 'core-js/modules/es.array.slice', 'core-js/modules/es.number.constructor', 'core-js/modules/es.object.keys', 'core-js/modules/es.array.concat', 'core-js/modules/es.array.splice', 'core-js/modules/es.symbol', 'core-js/modules/es.symbol.description', 'core-js/modules/es.symbol.async-iterator', 'core-js/modules/es.symbol.iterator', 'core-js/modules/es.symbol.to-string-tag', 'core-js/modules/es.array.for-each', 'core-js/modules/es.array.iterator', 'core-js/modules/es.array.reverse', 'core-js/modules/es.date.to-string', 'core-js/modules/es.json.to-string-tag', 'core-js/modules/es.math.to-string-tag', 'core-js/modules/es.object.create', 'core-js/modules/es.object.define-property', 'core-js/modules/es.object.get-prototype-of', 'core-js/modules/es.object.set-prototype-of', 'core-js/modules/es.object.to-string', 'core-js/modules/es.promise', 'core-js/modules/es.regexp.to-string', 'core-js/modules/es.string.iterator', 'core-js/modules/web.dom-collections.for-each', 'core-js/modules/web.dom-collections.iterator', 'core-js/modules/web.url'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('core-js/modules/es.array.map'), require('vue'), require('vue-class-component'), require('core-js/modules/es.function.name'), require('core-js/modules/es.array.filter'), require('core-js/modules/es.array.join'), require('core-js/modules/es.array.slice'), require('core-js/modules/es.number.constructor'), require('core-js/modules/es.object.keys'), require('core-js/modules/es.array.concat'), require('core-js/modules/es.array.splice'), require('core-js/modules/es.symbol'), require('core-js/modules/es.symbol.description'), require('core-js/modules/es.symbol.async-iterator'), require('core-js/modules/es.symbol.iterator'), require('core-js/modules/es.symbol.to-string-tag'), require('core-js/modules/es.array.for-each'), require('core-js/modules/es.array.iterator'), require('core-js/modules/es.array.reverse'), require('core-js/modules/es.date.to-string'), require('core-js/modules/es.json.to-string-tag'), require('core-js/modules/es.math.to-string-tag'), require('core-js/modules/es.object.create'), require('core-js/modules/es.object.define-property'), require('core-js/modules/es.object.get-prototype-of'), require('core-js/modules/es.object.set-prototype-of'), require('core-js/modules/es.object.to-string'), require('core-js/modules/es.promise'), require('core-js/modules/es.regexp.to-string'), require('core-js/modules/es.string.iterator'), require('core-js/modules/web.dom-collections.for-each'), require('core-js/modules/web.dom-collections.iterator'), require('core-js/modules/web.url')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'core-js/modules/es.array.map', 'vue', 'vue-class-component', 'core-js/modules/es.function.name', 'core-js/modules/es.array.filter', 'core-js/modules/es.array.join', 'core-js/modules/es.array.slice', 'core-js/modules/es.number.constructor', 'core-js/modules/es.object.keys', 'core-js/modules/es.array.concat', 'core-js/modules/es.array.splice', 'core-js/modules/es.symbol', 'core-js/modules/es.symbol.description', 'core-js/modules/es.symbol.async-iterator', 'core-js/modules/es.symbol.iterator', 'core-js/modules/es.symbol.to-string-tag', 'core-js/modules/es.array.for-each', 'core-js/modules/es.array.iterator', 'core-js/modules/es.array.reverse', 'core-js/modules/es.date.to-string', 'core-js/modules/es.json.to-string-tag', 'core-js/modules/es.math.to-string-tag', 'core-js/modules/es.object.create', 'core-js/modules/es.object.define-property', 'core-js/modules/es.object.get-prototype-of', 'core-js/modules/es.object.set-prototype-of', 'core-js/modules/es.object.to-string', 'core-js/modules/es.promise', 'core-js/modules/es.regexp.to-string', 'core-js/modules/es.string.iterator', 'core-js/modules/web.dom-collections.for-each', 'core-js/modules/web.dom-collections.iterator', 'core-js/modules/web.url'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FormRenderer = {}, null, global.Vue));
 }(this, (function (exports, es_array_map, Vue) { 'use strict';
 
@@ -1463,6 +1463,26 @@
   function isUndef(v) {
     return v === null || v === undefined;
   }
+  function checkValidate(value, rules) {
+    var _iterator = _createForOfIteratorHelper(rules),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var rule = _step.value;
+
+        if (rule.required && (value === '' || isUndef(value) || value.length === 0)) {
+          return rule;
+        } else if (rule.pattern && value && !rule.pattern.test(value)) {
+          return rule;
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  }
 
   /**
    * @update(names, ids) 数据更新
@@ -1706,7 +1726,7 @@
 
   var __vue_inject_styles__$3 = function __vue_inject_styles__(inject) {
     if (!inject) return;
-    inject("data-v-249171f6_0", {
+    inject("data-v-4d7ded29_0", {
       source: ".cascader__crumb {\n  float: left;\n  padding: 7px 10px;\n  font-size: 12px;\n  line-height: 22px;\n  background-color: #fff;\n  border-bottom: 1px solid #fff;\n}\n.cascader__crumb.selected {\n  border-bottom: 1px solid #fc4548;\n}\n.cascader__level {\n  height: 216px;\n  -webkit-overflow-scrolling: touch;\n  overflow-y: auto;\n}\n.cascader__item {\n  position: relative;\n  padding: 7px 20px;\n  font-size: 12px;\n  line-height: 22px;\n  background-color: #fff;\n}\n.cascader__item:after {\n  left: 15px;\n}\n.cascader__item.selected {\n  color: #fc4548;\n}\n.cascader__item:last-child:after {\n  display: none;\n}\n.cascader__item .icon {\n  display: inline-block;\n  padding-left: 5px;\n  color: #fc4548;\n}\n",
       map: {
         "version": 3,
@@ -3407,7 +3427,7 @@
          * 存储数据
          */
         innerForm: {},
-        isError: {},
+        isValidate: {},
         pageIndex: 0
       };
     },
@@ -3522,34 +3542,19 @@
             for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
               var section = _step4.value;
               var value = this.innerForm[section.key];
-              var ruleMap = this.validateRule[section.key];
+              var ruleMap = this.validateRule[section.key]; // 对于所有的trigger都处理
 
               for (var trigger in ruleMap) {
                 var rules = ruleMap[trigger] || [];
+                var failRule = checkValidate(value, rules);
+                Vue__default['default'].set(this.isValidate, section.key, !failRule);
 
-                var _iterator5 = _createForOfIteratorHelper(rules),
-                    _step5;
-
-                try {
-                  for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-                    var rule = _step5.value;
-
-                    if (rule.required && (value === '' || isUndef(value) || value.length === 0)) {
-                      Vue__default['default'].set(this.isError, section.key, true);
-
-                      if (rule.message) {
-                        this.$emit('error', rule.message);
-                      }
-
-                      return false;
-                    } else {
-                      Vue__default['default'].set(this.isError, section.key, false);
-                    }
+                if (failRule) {
+                  if (failRule.message) {
+                    this.$emit('error', failRule.message);
                   }
-                } catch (err) {
-                  _iterator5.e(err);
-                } finally {
-                  _iterator5.f();
+
+                  return false;
                 }
               }
             }
@@ -3577,45 +3582,28 @@
         }) : null, h(section.type, {
           props: _objectSpread2({
             value: _this.innerForm[section.key],
-            isError: _this.isError[section.key]
+            isError: !_this.isValidate[section.key]
           }, section.props),
           on: {
             input: function input(value) {
               _this.innerForm[section.key] = value;
 
-              _this.$emit('update:form', _this.innerForm);
+              _this.$emit('update:form', _this.innerForm); // 当输入时，标记为正常
 
-              Vue__default['default'].set(_this.isError, section.key, false);
+
+              Vue__default['default'].set(_this.isValidate, section.key, true);
             },
             blur: function blur() {
               // 触发validate
               var ruleMap = _this.validateRule[section.key];
 
               if (ruleMap) {
-                var rules = ruleMap['blur'] || [];
+                var value = _this.innerForm[section.key];
+                var failRule = checkValidate(value, ruleMap['blur'] || []);
+                Vue__default['default'].set(_this.isValidate, section.key, !failRule);
 
-                var _iterator6 = _createForOfIteratorHelper(rules),
-                    _step6;
-
-                try {
-                  for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-                    var rule = _step6.value;
-                    var value = _this.innerForm[section.key];
-
-                    if (rule.required && (value === '' || isUndef(value) || value.length === 0)) {
-                      Vue__default['default'].set(_this.isError, section.key, true);
-
-                      if (rule.message) {
-                        _this.$emit('error', rule.message);
-                      }
-                    } else {
-                      Vue__default['default'].set(_this.isError, section.key, false);
-                    }
-                  }
-                } catch (err) {
-                  _iterator6.e(err);
-                } finally {
-                  _iterator6.f();
+                if (failRule && failRule.message) {
+                  _this.$emit('error', failRule.message);
                 }
               }
             }

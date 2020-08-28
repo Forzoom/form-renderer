@@ -1,6 +1,6 @@
 <script lang="js">
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
-import Vue from 'vue';
 import ItemTitle from './sections/title.vue';
 import ItemInput from './sections/input.vue';
 import ItemSelect from './sections/select.vue';
@@ -9,7 +9,7 @@ import ItemList from './sections/list.vue';
 import ItemButtonGroup from './sections/buttonGroup.vue';
 import ItemUploader from './sections/uploader.vue';
 import ItemTextarea from './sections/textarea.vue';
-import { isUndef } from '@/lib/utils';
+import { isUndef, checkValidate } from './utils';
 
 export default {
     name: 'Renderer',
@@ -37,7 +37,7 @@ export default {
              */
             innerForm: {},
 
-            isError: {},
+            isValidate: {},
             pageIndex: 0,
         };
     },
@@ -115,18 +115,16 @@ export default {
                 for (const section of sections) {
                     const value = this.innerForm[section.key];
                     const ruleMap = this.validateRule[section.key];
+                    // 对于所有的trigger都处理
                     for (const trigger in ruleMap) {
                         const rules = ruleMap[trigger] || [];
-                        for (const rule of rules) {
-                            if (rule.required && (value === '' || isUndef(value) || value.length === 0)) {
-                                Vue.set(this.isError, section.key, true);
-                                if (rule.message) {
-                                    this.$emit('error', rule.message);
-                                }
-                                return false;
-                            } else {
-                                Vue.set(this.isError, section.key, false);
+                        const failRule = checkValidate(value, rules);
+                        Vue.set(this.isValidate, section.key, !failRule);
+                        if (failRule) {
+                            if (failRule.message) {
+                                this.$emit('error', failRule.message);
                             }
+                            return false;
                         }
                     }
                 }
@@ -148,7 +146,7 @@ export default {
                 h(section.type, {
                     props: {
                         value: this.innerForm[section.key],
-                        isError: this.isError[section.key],
+                        isError: !this.isValidate[section.key],
                         ...section.props,
                     },
                     on: {
@@ -156,23 +154,18 @@ export default {
                             this.innerForm[section.key] = value;
                             this.$emit('update:form', this.innerForm);
 
-                            Vue.set(this.isError, section.key, false);
+                            // 当输入时，标记为正常
+                            Vue.set(this.isValidate, section.key, true);
                         },
                         blur: () => {
                             // 触发validate
                             const ruleMap = this.validateRule[section.key];
                             if (ruleMap) {
-                                const rules = ruleMap['blur'] || [];
-                                for (const rule of rules) {
-                                    const value = this.innerForm[section.key];
-                                    if (rule.required && (value === '' || isUndef(value) || value.length === 0)) {
-                                        Vue.set(this.isError, section.key, true);
-                                        if (rule.message) {
-                                            this.$emit('error', rule.message);
-                                        }
-                                    } else {
-                                        Vue.set(this.isError, section.key, false);
-                                    }
+                                const value = this.innerForm[section.key];
+                                const failRule = checkValidate(value, ruleMap['blur'] || []);
+                                Vue.set(this.isValidate, section.key, !failRule);
+                                if (failRule && failRule.message) {
+                                    this.$emit('error', failRule.message);
                                 }
                             }
                         },
