@@ -2,7 +2,7 @@
     <div>
         <input v-if="type == 'text'"
             class="item-input"
-            :class="{ 'is-error': isValidate }"
+            :class="{ 'is-error': !isValidate }"
             type="text"
             :name="name"
             :placeholder="placeholder"
@@ -11,7 +11,7 @@
             @blur="onBlur" />
         <input v-else-if="type == 'tel'"
             class="item-input"
-            :class="{ 'is-error': isValidate }"
+            :class="{ 'is-error': !isValidate }"
             type="tel"
             :name="name"
             :placeholder="placeholder"

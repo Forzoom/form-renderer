@@ -19,8 +19,6 @@
 
 </template>
 <script lang="js">
-import { Component, Vue, Prop } from 'vue-property-decorator';
-import { ValueText } from 'types/form';
 
 export default {
     name: 'ItemButtonGroup',

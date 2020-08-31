@@ -17,7 +17,6 @@
                 :class="{selected: item.id == value[level]}"
                 @click="onClickItem(item, level)">
                 {{item.name}}
-                <i class="icon" v-if="item.id == value[level]">&#xe680;</i>
             </div>
         </div>
     </div>
@@ -43,11 +42,9 @@ export default {
         maxLevel: { type: Number, default: 3 },
 
         /** item数据 */
-        itemMap: { required: true, type: Object },
-
+        // @Prop({ required: true, type: Object }) public itemMap!: { [id: number]: CascaderItem };
         /** list数据 */
-        listMap: { required: true, type: Object },
-
+        // @Prop({ required: true, type: Object }) public listMap!: { [id: number]: CascaderItem[] };
         /** 获取列表数据 */
         fetchList: { required: true, type: Function },
     },
@@ -56,6 +53,9 @@ export default {
         return {
             /** 当前显示的level */
             level: 0,
+
+            itemMap: {},
+            listMap: {},
         };
     },
 
@@ -128,6 +128,15 @@ export default {
     watch: {},
 
     methods: {
+        innerFetchList: async function(item) {
+            const ret = await this.fetchList(item);
+            for (let i = 0, len = ret.length ; i < len; i++) {
+                this.$set(this.itemMap, ret[i].id, ret[i]);
+            }
+            this.$set(this.listMap, item.id, ret);
+            return ret;
+        },
+
         /**
          * 当address被点击
          *
@@ -140,7 +149,7 @@ export default {
             // 更新ids
             ids.push(item.id);
 
-            const list = await this.fetchList(item);
+            const list = await this.innerFetchList(item);
             if (list.length > 0) {
                 this.level = level + 1;
             }
@@ -148,7 +157,6 @@ export default {
             this.$emit('input', ids);
 
             this.$nextTick(() => {
-                // console.log('target2', this.moreColumnVisible);
                 if (!this.moreColumnVisible) {
                     this.$emit('finish');
                 }
@@ -166,7 +174,7 @@ export default {
     },
 
     created: function() {
-        this.fetchList({ id: 0, name: '' });
+        this.innerFetchList({ id: 0, name: '' });
     },
 };
 </script>
@@ -212,11 +220,6 @@ export default {
         }
         &:last-child:after {
             display: none;
-        }
-        .icon {
-            display: inline-block;
-            padding-left: 5px;
-            color: @color-red;
         }
     }
 }

@@ -54,3 +54,14 @@
     font-size: @text-tiny-font-size;
     line-height: @text-tiny-line-height;
 }
+
+.clearfix() {
+	&:before,
+	&:after {
+		content: '';
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}

@@ -4,6 +4,7 @@ export interface ValidateRule {
     trigger?: 'blur' | 'validate';
     /** 最大长度 */
     max?: number;
+    min?: number;
     message?: string;
 }
 
@@ -53,7 +54,7 @@ export interface ItemCascaderMeta extends FormBasicSectionMeta {
         /** list数据 */
         listMap: { [id: number]: CascaderItem[] };
         /** 获取列表数据 */
-        fetchList: (item: CascaderItem) => CascaderItem[] | Promise<CascaderItem[]>;
+        fetchList: <T extends CascaderItem>(item: T) => T[] | Promise<T[]>;
     };
 }
 
@@ -98,11 +99,24 @@ export interface ItemUploaderMeta extends FormBasicSectionMeta {
     props: {
         title?: string;
         titleHint?: string;
+        /** 用于发送上传请求 */
+        httpRequest: (imageInfo: ImageInfo) => ImageInfo | Promise<ImageInfo>;
+        
+    };
+}
+
+export interface ItemMultiUploaderMeta extends FormBasicSectionMeta {
+    type: 'ItemMultiUploader';
+    titleComponent: true;
+    props: {
+        title?: string;
+        titleHint?: string;
+        size?: number;
         httpRequest: (imageInfo: ImageInfo) => ImageInfo | Promise<ImageInfo>;
     };
 }
 
-export type FormSectionMeta = ItemInputMeta | ItemSelectMeta | ItemCascaderMeta | ItemListMeta | ItemTextareaMeta | ItemButtonGroupMeta | ItemUploaderMeta;
+export type FormSectionMeta = ItemInputMeta | ItemSelectMeta | ItemCascaderMeta | ItemListMeta | ItemTextareaMeta | ItemButtonGroupMeta | ItemUploaderMeta | ItemMultiUploaderMeta;
 
 export interface ValueText {
     value: any;
@@ -112,6 +126,8 @@ export interface ValueText {
 export interface ImageInfo {
     key: string;
     url: string;
+    /** file: 上传后的文件链接 wechat: 微信临时文件 */
+    mode: 'file' | 'wechat';
 }
 
 export interface CascaderItem {

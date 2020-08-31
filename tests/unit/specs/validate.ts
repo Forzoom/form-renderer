@@ -29,6 +29,19 @@ describe('validate', () => {
         expect(checkValidate('123456', rules)).to.not.be.undefined;
         expect(checkValidate(5, rules)).to.be.undefined;
         expect(checkValidate(5.1, rules)).to.not.be.undefined;
+        expect(checkValidate([ 1,2,3,4,5 ], rules)).to.be.undefined;
+        expect(checkValidate([ 1,2,3,4,5,6 ], rules)).to.not.be.undefined;
+    });
+
+    it('min', () => {
+        const rules: ValidateRule[] = [ { min: 5 } ];
+        expect(checkValidate('12345', rules)).to.be.undefined;
+        expect(checkValidate(null, rules)).to.be.undefined;
+        expect(checkValidate('1234', rules)).to.not.be.undefined;
+        expect(checkValidate(5, rules)).to.be.undefined;
+        expect(checkValidate(4.9, rules)).to.not.be.undefined;
+        expect(checkValidate([ 1,2,3,4,5 ], rules)).to.be.undefined;
+        expect(checkValidate([ 1,2,3,4 ], rules)).to.not.be.undefined;
     });
 
     it('require pattern', () => {

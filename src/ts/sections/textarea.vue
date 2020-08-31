@@ -1,5 +1,5 @@
 <template>
-    <div class="item-textarea" :class="{'is-error': isValidate}">
+    <div class="item-textarea" :class="{'is-error': !isValidate}">
         <textarea class="textarea"
             v-model="content"
             :placeholder="placeholder"

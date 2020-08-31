@@ -10,6 +10,7 @@ interface FormRendererMethod {
     isFirstPage(): boolean;
     isLastPage(): boolean;
     validate(): boolean;
+    beforeSubmit(): void;
 }
 
 export type FormRendererComponent = CombinedVueInstance<Vue, FormRendererData, FormRendererMethod, object, object>;

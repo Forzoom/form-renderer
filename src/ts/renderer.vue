@@ -9,6 +9,7 @@ import ItemList from './sections/list.vue';
 import ItemButtonGroup from './sections/buttonGroup.vue';
 import ItemUploader from './sections/uploader.vue';
 import ItemTextarea from './sections/textarea.vue';
+import ItemMultiUploader from './sections/multiUploader.vue';
 import { FormPageMeta, ValidateRule } from '../../types/form';
 import { isUndef, checkValidate } from './utils';
 
@@ -23,6 +24,7 @@ import { isUndef, checkValidate } from './utils';
         ItemButtonGroup,
         ItemUploader,
         ItemTextarea,
+        ItemMultiUploader,
     },
 })
 export default class FormRenderer extends Vue {
@@ -46,10 +48,12 @@ export default class FormRenderer extends Vue {
             } | undefined;
         } = {};
         for (const page of this.meta) {
-            for (const section of page.sections) {
+            for (let si = 0, len = page.sections.length; si < len; si++) {
+                const section = page.sections[si];
+                rule[section.key] = {};
                 if (section.validates) {
-                    for (const validate of section.validates) {
-                        rule[section.key] = {};
+                    for (let i = 0, len = section.validates.length; i < len; i++) {
+                        const validate = section.validates[i];
                         const trigger = validate.trigger || 'blur';
                         if (!rule[section.key]![trigger]) {
                             rule[section.key]![trigger] = [];
@@ -73,7 +77,7 @@ export default class FormRenderer extends Vue {
         return true;
     }
     /**
-     * 进入后一页
+     * 进入后一页，会检查当前页是否填写完整
      */
     public nextPage() {
         // 检查是否到最后一页
@@ -111,7 +115,7 @@ export default class FormRenderer extends Vue {
                 for (const trigger in ruleMap) {
                     const rules = ruleMap[trigger] || [];
                     const failRule = checkValidate(value, rules);
-                    Vue.set(this.isValidate, section.key, !failRule);
+                    this.$set(this.isValidate, section.key, !failRule);
                     if (failRule) {
                         if (failRule.message) {
                             this.$emit('error', failRule.message);
@@ -125,6 +129,23 @@ export default class FormRenderer extends Vue {
         return true;
     }
 
+    public async beforeSubmit() {
+        for (let pi = 0, plen = this.meta.length; pi < plen; pi++) {
+            const meta = this.meta[pi];
+            for (let i = 0, len = meta.sections.length; i < len; i++) {
+                const section = meta.sections[i];
+                if (section.type === 'ItemMultiUploader') {
+                    const $el = this.$refs[section.key];
+                    // @ts-ignore
+                    if ($el && $el.beforeSubmit) {
+                        // @ts-ignore
+                        await $el.beforeSubmit();
+                    }
+                }
+            }
+        }
+    }
+
     public render(h: CreateElement) {
         const children = this.meta[this.pageIndex].sections.map((section) => {
             return [
@@ -135,6 +156,7 @@ export default class FormRenderer extends Vue {
                     },
                 }) : null,
                 h(section.type, {
+                    ref: section.key,
                     props: {
                         value: this.innerForm[section.key],
                         isValidate: this.isValidate[section.key],
@@ -146,7 +168,7 @@ export default class FormRenderer extends Vue {
                             this.$emit('update:form', this.innerForm);
 
                             // 当输入时，标记为正常
-                            Vue.set(this.isValidate, section.key, true);
+                            this.$set(this.isValidate, section.key, true);
                         },
                         blur: () => {
                             // 触发validate
@@ -154,7 +176,7 @@ export default class FormRenderer extends Vue {
                             if (ruleMap) {
                                 const value = this.innerForm[section.key];
                                 const failRule = checkValidate(value, ruleMap['blur'] || []);
-                                Vue.set(this.isValidate, section.key, !failRule);
+                                this.$set(this.isValidate, section.key, !failRule);
                                 if (failRule && failRule.message) {
                                     this.$emit('error', failRule.message);
                                 }
@@ -164,7 +186,9 @@ export default class FormRenderer extends Vue {
                 }),
             ];
         });
-        return h('div', {}, children);
+        return h('div', {
+            class: 'form-renderer',
+        }, children);
     }
 
     public created() {
@@ -174,3 +198,19 @@ export default class FormRenderer extends Vue {
     }
 }
 </script>
+
+<style lang="less">
+
+.form-renderer {
+    .clearfix {
+        &:before,
+        &:after {
+            content: '';
+            display: table;
+        }
+        &:after {
+            clear: both;
+        }
+    }
+}
+</style>

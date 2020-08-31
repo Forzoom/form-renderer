@@ -18,11 +18,8 @@
 
 </template>
 <script lang="js">
-import { Component, Vue, Prop } from 'vue-property-decorator';
 import ItemTitle from './title.vue';
 import Uploader from '../components/uploader.vue';
-import { WechatUploaderComponent } from '@forzoom/uploader';
-import { ImageInfo } from 'types/form';
 
 export default {
     name: 'ItemUploader',
@@ -36,18 +33,23 @@ export default {
         value: {},
         title: { type: String },
         titleHint: { type: String },
+
+        /** 上传函数 */
         httpRequest: { required: true, type: Function },
+
+        /** 是否自动上传 */
+        autoUpload: { type: Boolean, default: true },
+
+        /** 是否通过验证 */
         isValiate: { type: Boolean, default: true },
     },
 
     data: function data() {
         return {
-            hasUploaded: true,
+            /** 可能存在判断出错的情况 */
+            hasUploaded: false,
         };
     },
-
-    computed: {},
-    watch: {},
 
     methods: {
         /**
@@ -62,9 +64,14 @@ export default {
             const imageInfo = {
                 key: serverId,
                 url: image,
+                mode: 'wechat',
             };
 
-            this.upload(imageInfo);
+            if (this.autoUpload) {
+                this.upload(imageInfo);
+            } else {
+                this.$emit('input', imageInfo);
+            }
         },
 
         /**
@@ -87,9 +94,21 @@ export default {
          * 上传流程
          */
         upload: async function(image) {
+            image = image || this.value;
+            if (this.hasUploaded || !image) {
+                return;
+            }
+
             const result = await this.httpRequest(image);
             this.$emit('input', result);
             this.hasUploaded = true;
+        },
+
+        /**
+         * 生命周期
+         */
+        beforeSubmit: async function() {
+            this.upload();
         },
     },
 
@@ -97,6 +116,8 @@ export default {
         if (this.value) {
             // @ts-ignore
             this.$refs.uploader.setImage(this.value.url);
+            // 如果已经有数据情况下，认为已经上传了
+            this.hasUploaded = true;
         }
     },
 };

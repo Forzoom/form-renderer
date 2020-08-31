@@ -1,5 +1,5 @@
 <template>
-    <div class="item-select" :class="{'is-error': isValidate}">
+    <div class="item-select" :class="{'is-error': !isValidate}">
         <div class="single-line-left">
             <slot name="left"></slot>
         </div>

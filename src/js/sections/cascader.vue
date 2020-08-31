@@ -1,6 +1,6 @@
 <template>
 
-    <div class="item-district" :class="{'is-error': isValidate}">
+    <div class="item-district" :class="{'is-error': !isValidate}">
         <div class="item-district__inner" :class="{placeholder: name.length === 0}" @click="onClickDistrict">
             {{name || placeholder}}
         </div>
@@ -12,9 +12,7 @@
 
 </template>
 <script lang="js">
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import Cascader from '../components/cascader.vue';
-import { CascaderItem } from 'types/form';
 
 export default {
     name: 'ItemCascader',

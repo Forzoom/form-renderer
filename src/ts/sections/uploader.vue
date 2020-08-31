@@ -31,13 +31,18 @@ import { ImageInfo } from 'types/form';
     },
 })
 export default class ItemUploader extends Vue {
-    @Prop() public value?: ImageInfo | null;
+    @Prop() public value?: ImageInfo;
     @Prop({ type: String }) public title?: string;
     @Prop({ type: String }) public titleHint?: string;
+    /** 上传函数 */
     @Prop({ required: true, type: Function }) public httpRequest!: (imageInfo: ImageInfo) => ImageInfo | Promise<ImageInfo>;
+    /** 是否自动上传 */
+    @Prop({ type: Boolean, default: true }) public autoUpload!: boolean;
+    /** 是否通过验证 */
     @Prop({ type: Boolean, default: true }) public isValiate?: boolean;
 
-    public hasUploaded = true;
+    /** 可能存在判断出错的情况 */
+    public hasUploaded = false;
 
     /**
      * 添加二维码
@@ -46,9 +51,14 @@ export default class ItemUploader extends Vue {
         const imageInfo: ImageInfo = {
             key: serverId,
             url: image,
+            mode: 'wechat',
         };
 
-        this.upload(imageInfo);
+        if (this.autoUpload) {
+            this.upload(imageInfo);
+        } else {
+            this.$emit('input', imageInfo);
+        }
     }
     /**
      * 删除二维码
@@ -69,16 +79,30 @@ export default class ItemUploader extends Vue {
     /**
      * 上传流程
      */
-    public async upload(image: ImageInfo) {
+    public async upload(image?: ImageInfo) {
+        image = image || this.value;
+        if (this.hasUploaded || !image) {
+            return;
+        }
+
         const result = await this.httpRequest(image);
         this.$emit('input', result);
         this.hasUploaded = true;
+    }
+
+    /**
+     * 生命周期
+     */
+    public async beforeSubmit() {
+        this.upload();
     }
 
     public mounted() {
         if (this.value) {
             // @ts-ignore
             this.$refs.uploader.setImage(this.value.url);
+            // 如果已经有数据情况下，认为已经上传了
+            this.hasUploaded = true;
         }
     }
 }

@@ -16,7 +16,6 @@
                 :class="{selected: item.id == value[level]}"
                 @click="onClickItem(item, level)">
                 {{item.name}}
-                <i class="icon" v-if="item.id == value[level]">&#xe680;</i>
             </div>
         </div>
     </div>
@@ -27,6 +26,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import {
     isUndef,
 } from '../utils';
+import { CascaderItem } from 'types/form';
 
 /**
  * @update(names, ids) 数据更新
@@ -41,14 +41,17 @@ export default class Cascader extends Vue {
     /** 最大的level，默认为3，只允许显示 <= maxLevel 的内容 */
     @Prop({ type: Number, default: 3 }) public maxLevel!: number;
     /** item数据 */
-    @Prop({ required: true, type: Object }) public itemMap!: { [id: number]: CascaderItem };
+    // @Prop({ required: true, type: Object }) public itemMap!: { [id: number]: CascaderItem };
     /** list数据 */
-    @Prop({ required: true, type: Object }) public listMap!: { [id: number]: CascaderItem[] };
+    // @Prop({ required: true, type: Object }) public listMap!: { [id: number]: CascaderItem[] };
     /** 获取列表数据 */
     @Prop({ required: true, type: Function }) public fetchList!: (item: CascaderItem) => CascaderItem[];
 
     /** 当前显示的level */
     public level = 0;
+
+    public itemMap: { [id: number]: CascaderItem } = {};
+    public listMap: { [id: number]: CascaderItem[] } = {};
 
     public get list() {
         return this.level === 0 ? this.listMap[0] : this.listMap[this.value[this.level - 1]];
@@ -112,6 +115,14 @@ export default class Cascader extends Vue {
         }
     }
 
+    public async innerFetchList(item: CascaderItem) {
+        const ret = await this.fetchList(item);
+        for (let i = 0, len = ret.length ; i < len; i++) {
+            this.$set(this.itemMap, ret[i].id, ret[i]);
+        }
+        this.$set(this.listMap, item.id, ret);
+        return ret;
+    }
     /**
      * 当address被点击
      *
@@ -124,7 +135,7 @@ export default class Cascader extends Vue {
         // 更新ids
         ids.push(item.id);
 
-        const list = await this.fetchList(item);
+        const list = await this.innerFetchList(item);
         if (list.length > 0) {
             this.level = level + 1;
         }
@@ -132,7 +143,6 @@ export default class Cascader extends Vue {
         this.$emit('input', ids);
 
         this.$nextTick(() => {
-            // console.log('target2', this.moreColumnVisible);
             if (!this.moreColumnVisible) {
                 this.$emit('finish');
             }
@@ -148,7 +158,7 @@ export default class Cascader extends Vue {
     }
 
     public created() {
-        this.fetchList({ id: 0, name: '' });
+        this.innerFetchList({ id: 0, name: '' });
     }
 }
 </script>
@@ -194,11 +204,6 @@ export default class Cascader extends Vue {
         }
         &:last-child:after {
             display: none;
-        }
-        .icon {
-            display: inline-block;
-            padding-left: 5px;
-            color: @color-red;
         }
     }
 }

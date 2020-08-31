@@ -1,5 +1,5 @@
 <template>
-    <div class="item-district" :class="{'is-error': isValidate}">
+    <div class="item-district" :class="{'is-error': !isValidate}">
         <div class="item-district__inner" :class="{placeholder: name.length === 0}" @click="onClickDistrict">
             {{name || placeholder}}
         </div>
@@ -26,7 +26,7 @@ export default class ItemDistrict extends Vue {
     @Prop({ type: String, default: '请选择' }) public placeholder?: string;
     @Prop({ required: true, type: Object }) public itemMap!: { [id: number]: CascaderItem };
     @Prop({ required: true, type: Object }) public listMap!: { [id: number]: CascaderItem[] };
-    @Prop({ required: true, type: Function }) public fetchList!: (item: CascaderItem) => CascaderItem[] | Promise<CascaderItem[]>;
+    @Prop({ required: true, type: Function }) public fetchList!: <T extends CascaderItem>(item: T) => T[] | Promise<T[]>;
     @Prop({ type: Boolean, default: true }) public isValidate?: boolean;
 
     public visible = false;
