@@ -41,10 +41,6 @@ export default {
         /** 最大的level，默认为3，只允许显示 <= maxLevel 的内容 */
         maxLevel: { type: Number, default: 3 },
 
-        /** item数据 */
-        // @Prop({ required: true, type: Object }) public itemMap!: { [id: number]: CascaderItem };
-        /** list数据 */
-        // @Prop({ required: true, type: Object }) public listMap!: { [id: number]: CascaderItem[] };
         /** 获取列表数据 */
         fetchList: { required: true, type: Function },
     },
@@ -134,6 +130,8 @@ export default {
                 this.$set(this.itemMap, ret[i].id, ret[i]);
             }
             this.$set(this.listMap, item.id, ret);
+            this.$emit('itemMap', this.itemMap);
+            this.$emit('listMap', this.listMap);
             return ret;
         },
 

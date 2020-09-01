@@ -39,7 +39,7 @@ export default class ItemSelect extends Vue {
     /** 选择内容 */
     @Prop({ type: Array, default() { return []; } }) public options!: ValueText[];
     /** 是否错误 */
-    @Prop({ type: Boolean }) public isValidate?: boolean;
+    @Prop({ type: Boolean, default: true }) public isValidate?: boolean;
 
     /** 内容 */
     public content = '';

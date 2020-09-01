@@ -2,6 +2,7 @@
 build
 node_modules
 src
+tests
 .gitignore
 babel.config.js
 shuttle.config.json

@@ -1633,7 +1633,8 @@
 
 	    /** 是否错误 */
 	    isValidate: {
-	      type: Boolean
+	      type: Boolean,
+	      "default": true
 	    }
 	  },
 	  data: function data() {
@@ -1723,7 +1724,7 @@
 
 	var __vue_inject_styles__$2 = function __vue_inject_styles__(inject) {
 	  if (!inject) return;
-	  inject("data-v-199dcdbd_0", {
+	  inject("data-v-03774b24_0", {
 	    source: ".item-select {\n  padding: 10px 15px;\n  font-size: 14px;\n  line-height: 25px;\n  background-color: #f2f2f2;\n  border: 1px solid transparent;\n  border-radius: 5px;\n  box-sizing: border-box;\n}\n.item-select.is-error {\n  box-shadow: 0 0 1px 1px #fc4548;\n}\n.item-select .select {\n  width: 100%;\n  line-height: 25px;\n  background-color: transparent;\n  box-sizing: border-box;\n}\n.item-select .select.padding-left {\n  padding-left: 10px;\n}\n.item-select .select.padding-right {\n  padding-right: 10px;\n}\n.item-select .select.left {\n  text-align: left;\n}\n.item-select .select.right {\n  text-align: right;\n}\n.item-select .select.center {\n  text-align: center;\n}\n.item-select .select.placeholder {\n  color: #c8c8c8;\n}\n.item-select.blank {\n  border-color: #fc4548;\n}\n.item-select.blank .input::-webkit-input-placeholder {\n  color: #fc4548;\n}\n",
 	    map: {
 	      "version": 3,
@@ -1829,12 +1830,6 @@
 	      type: Number,
 	      "default": 3
 	    },
-
-	    /** item数据 */
-	    // @Prop({ required: true, type: Object }) public itemMap!: { [id: number]: CascaderItem };
-
-	    /** list数据 */
-	    // @Prop({ required: true, type: Object }) public listMap!: { [id: number]: CascaderItem[] };
 
 	    /** 获取列表数据 */
 	    fetchList: {
@@ -1942,9 +1937,11 @@
 	                }
 
 	                this.$set(this.listMap, item.id, ret);
+	                this.$emit('itemMap', this.itemMap);
+	                this.$emit('listMap', this.listMap);
 	                return _context.abrupt("return", ret);
 
-	              case 6:
+	              case 8:
 	              case "end":
 	                return _context.stop();
 	            }
@@ -2078,7 +2075,7 @@
 
 	var __vue_inject_styles__$3 = function __vue_inject_styles__(inject) {
 	  if (!inject) return;
-	  inject("data-v-26eadd4c_0", {
+	  inject("data-v-4b663bfc_0", {
 	    source: ".cascader__crumb {\n  float: left;\n  padding: 7px 10px;\n  font-size: 12px;\n  line-height: 22px;\n  background-color: #fff;\n  border-bottom: 1px solid #fff;\n}\n.cascader__crumb.selected {\n  border-bottom: 1px solid #fc4548;\n}\n.cascader__level {\n  height: 216px;\n  -webkit-overflow-scrolling: touch;\n  overflow-y: auto;\n}\n.cascader__item {\n  position: relative;\n  padding: 7px 20px;\n  font-size: 12px;\n  line-height: 22px;\n  background-color: #fff;\n}\n.cascader__item:after {\n  left: 15px;\n}\n.cascader__item.selected {\n  color: #fc4548;\n}\n.cascader__item:last-child:after {\n  display: none;\n}\n",
 	    map: {
 	      "version": 3,
@@ -2126,14 +2123,6 @@
 	      type: String,
 	      "default": '请选择'
 	    },
-	    itemMap: {
-	      required: true,
-	      type: Object
-	    },
-	    listMap: {
-	      required: true,
-	      type: Object
-	    },
 	    fetchList: {
 	      required: true,
 	      type: Function
@@ -2146,7 +2135,8 @@
 	  data: function data() {
 	    return {
 	      visible: false,
-	      ids: []
+	      ids: [],
+	      itemMap: {}
 	    };
 	  },
 	  computed: {
@@ -2168,7 +2158,10 @@
 	    }
 	  },
 	  methods: {
-	    onClickDistrict: function onClickDistrict() {
+	    onItemMapUpate: function onItemMapUpate(itemMap) {
+	      this.itemMap = itemMap;
+	    },
+	    onClickPlaceholder: function onClickPlaceholder() {
 	      this.visible = true;
 	    },
 	    onFinish: function onFinish() {
@@ -2188,17 +2181,17 @@
 	  var _c = _vm._self._c || _h;
 
 	  return _c("div", {
-	    staticClass: "item-district",
+	    staticClass: "item-cascader",
 	    "class": {
 	      "is-error": !_vm.isValidate
 	    }
 	  }, [_c("div", {
-	    staticClass: "item-district__inner",
+	    staticClass: "item-cascader__inner",
 	    "class": {
 	      placeholder: _vm.name.length === 0
 	    },
 	    on: {
-	      click: _vm.onClickDistrict
+	      click: _vm.onClickPlaceholder
 	    }
 	  }, [_vm._v("\n        " + _vm._s(_vm.name || _vm.placeholder) + "\n    ")]), _vm._v(" "), _c("van-popup", {
 	    attrs: {
@@ -2213,11 +2206,10 @@
 	    }
 	  }, [_c("Cascader", {
 	    attrs: {
-	      itemMap: _vm.itemMap,
-	      listMap: _vm.listMap,
 	      fetchList: _vm.fetchList
 	    },
 	    on: {
+	      itemMap: _vm.onItemMapUpate,
 	      finish: _vm.onFinish
 	    },
 	    model: {
@@ -2236,15 +2228,15 @@
 
 	var __vue_inject_styles__$4 = function __vue_inject_styles__(inject) {
 	  if (!inject) return;
-	  inject("data-v-2bc8f7d6_0", {
-	    source: ".item-district {\n  background-color: #f2f2f2;\n  border-radius: 5px;\n}\n.item-district.is-error {\n  box-shadow: 0 0 1px 1px #fc4548;\n}\n.item-district__inner {\n  padding: 10px 15px;\n  font-size: 14px;\n  line-height: 25px;\n}\n.item-district .placeholder {\n  color: #c8c8c8;\n}\n",
+	  inject("data-v-174a69aa_0", {
+	    source: ".item-cascader {\n  background-color: #f2f2f2;\n  border-radius: 5px;\n}\n.item-cascader.is-error {\n  box-shadow: 0 0 1px 1px #fc4548;\n}\n.item-cascader__inner {\n  padding: 10px 15px;\n  font-size: 14px;\n  line-height: 25px;\n}\n.item-cascader .placeholder {\n  color: #c8c8c8;\n}\n",
 	    map: {
 	      "version": 3,
 	      "sources": ["cascader.vue"],
 	      "names": [],
 	      "mappings": "AAAA;EACE,yBAAyB;EACzB,kBAAkB;AACpB;AACA;EACE,+BAA+B;AACjC;AACA;EACE,kBAAkB;EAClB,eAAe;EACf,iBAAiB;AACnB;AACA;EACE,cAAc;AAChB",
 	      "file": "cascader.vue",
-	      "sourcesContent": [".item-district {\n  background-color: #f2f2f2;\n  border-radius: 5px;\n}\n.item-district.is-error {\n  box-shadow: 0 0 1px 1px #fc4548;\n}\n.item-district__inner {\n  padding: 10px 15px;\n  font-size: 14px;\n  line-height: 25px;\n}\n.item-district .placeholder {\n  color: #c8c8c8;\n}\n"]
+	      "sourcesContent": [".item-cascader {\n  background-color: #f2f2f2;\n  border-radius: 5px;\n}\n.item-cascader.is-error {\n  box-shadow: 0 0 1px 1px #fc4548;\n}\n.item-cascader__inner {\n  padding: 10px 15px;\n  font-size: 14px;\n  line-height: 25px;\n}\n.item-cascader .placeholder {\n  color: #c8c8c8;\n}\n"]
 	    },
 	    media: undefined
 	  });

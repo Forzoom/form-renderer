@@ -1,12 +1,14 @@
 <template>
 
-    <div class="item-district" :class="{'is-error': !isValidate}">
-        <div class="item-district__inner" :class="{placeholder: name.length === 0}" @click="onClickDistrict">
+    <div class="item-cascader" :class="{'is-error': !isValidate}">
+        <div class="item-cascader__inner" :class="{placeholder: name.length === 0}" @click="onClickPlaceholder">
             {{name || placeholder}}
         </div>
 
         <van-popup v-model="visible" position="bottom">
-            <Cascader v-model="ids" :itemMap="itemMap" :listMap="listMap" :fetchList="fetchList" @finish="onFinish" />
+            <Cascader v-model="ids"
+                @itemMap="onItemMapUpate"
+                :fetchList="fetchList" @finish="onFinish" />
         </van-popup>
     </div>
 
@@ -24,8 +26,6 @@ export default {
     props: {
         value: { type: Array, default() { return []; } },
         placeholder: { type: String, default: '请选择' },
-        itemMap: { required: true, type: Object },
-        listMap: { required: true, type: Object },
         fetchList: { required: true, type: Function },
         isValidate: { type: Boolean, default: true },
     },
@@ -34,6 +34,7 @@ export default {
         return {
             visible: false,
             ids: [],
+            itemMap: {},
         };
     },
 
@@ -53,7 +54,11 @@ export default {
     },
 
     methods: {
-        onClickDistrict: function() {
+        onItemMapUpate: function(itemMap) {
+            this.itemMap = itemMap;
+        },
+
+        onClickPlaceholder: function() {
             this.visible = true;
         },
 
@@ -67,7 +72,7 @@ export default {
 
 @import "../../lib/style/mixins.less";
 
-.item-district {
+.item-cascader {
     background-color: #f2f2f2;
     border-radius: 5px;
     &.is-error {

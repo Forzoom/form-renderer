@@ -45,7 +45,7 @@ export default {
         options: { type: Array, default() { return []; } },
 
         /** 是否错误 */
-        isValidate: { type: Boolean },
+        isValidate: { type: Boolean, default: true },
     },
 
     data: function data() {

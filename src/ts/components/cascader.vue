@@ -40,10 +40,6 @@ export default class Cascader extends Vue {
     @Prop({ type: Array, default() { return []; } }) public value!: number[];
     /** 最大的level，默认为3，只允许显示 <= maxLevel 的内容 */
     @Prop({ type: Number, default: 3 }) public maxLevel!: number;
-    /** item数据 */
-    // @Prop({ required: true, type: Object }) public itemMap!: { [id: number]: CascaderItem };
-    /** list数据 */
-    // @Prop({ required: true, type: Object }) public listMap!: { [id: number]: CascaderItem[] };
     /** 获取列表数据 */
     @Prop({ required: true, type: Function }) public fetchList!: (item: CascaderItem) => CascaderItem[];
 
@@ -121,6 +117,8 @@ export default class Cascader extends Vue {
             this.$set(this.itemMap, ret[i].id, ret[i]);
         }
         this.$set(this.listMap, item.id, ret);
+        this.$emit('itemMap', this.itemMap);
+        this.$emit('listMap', this.listMap);
         return ret;
     }
     /**

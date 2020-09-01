@@ -1,6 +1,6 @@
 {
-    "src": "./src/ts/sections/multiUploader.vue",
-    "dst": "./src/js/sections/multiUploader.vue",
+    "src": "./src/ts/sections/cascader.vue",
+    "dst": "./src/js/sections/cascader.vue",
     "parser": "tsClassVue",
     "generator": "jsVue"
 }

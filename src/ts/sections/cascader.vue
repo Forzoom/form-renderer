@@ -1,11 +1,13 @@
 <template>
-    <div class="item-district" :class="{'is-error': !isValidate}">
-        <div class="item-district__inner" :class="{placeholder: name.length === 0}" @click="onClickDistrict">
+    <div class="item-cascader" :class="{'is-error': !isValidate}">
+        <div class="item-cascader__inner" :class="{placeholder: name.length === 0}" @click="onClickPlaceholder">
             {{name || placeholder}}
         </div>
 
         <van-popup v-model="visible" position="bottom">
-            <Cascader v-model="ids" :itemMap="itemMap" :listMap="listMap" :fetchList="fetchList" @finish="onFinish" />
+            <Cascader v-model="ids"
+                @itemMap="onItemMapUpate"
+                :fetchList="fetchList" @finish="onFinish" />
         </van-popup>
     </div>
 </template>
@@ -24,13 +26,12 @@ import { CascaderItem } from 'types/form';
 export default class ItemDistrict extends Vue {
     @Prop({ type: Array, default() { return []; } }) public value?: number[];
     @Prop({ type: String, default: '请选择' }) public placeholder?: string;
-    @Prop({ required: true, type: Object }) public itemMap!: { [id: number]: CascaderItem };
-    @Prop({ required: true, type: Object }) public listMap!: { [id: number]: CascaderItem[] };
     @Prop({ required: true, type: Function }) public fetchList!: <T extends CascaderItem>(item: T) => T[] | Promise<T[]>;
     @Prop({ type: Boolean, default: true }) public isValidate?: boolean;
 
     public visible = false;
     public ids: number[] = [];
+    public itemMap: { [id: number]: CascaderItem } = {};
 
     public get name() {
         if (!this.itemMap) {
@@ -44,7 +45,11 @@ export default class ItemDistrict extends Vue {
         this.$emit('input', this.ids);
     }
 
-    public onClickDistrict() {
+    public onItemMapUpate(itemMap: { [id: number]: CascaderItem }) {
+        this.itemMap = itemMap;
+    }
+
+    public onClickPlaceholder() {
         this.visible = true;
     }
 
@@ -57,7 +62,7 @@ export default class ItemDistrict extends Vue {
 <style lang="less">
 @import "../../lib/style/mixins.less";
 
-.item-district {
+.item-cascader {
     background-color: #f2f2f2;
     border-radius: 5px;
     &.is-error {
