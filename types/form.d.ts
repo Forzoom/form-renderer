@@ -50,9 +50,6 @@ export interface ItemCascaderMeta extends FormBasicSectionMeta {
         title?: string;
         titleHint?: string;
         placeholder?: string;
-        itemMap: { [id: number]: CascaderItem };
-        /** list数据 */
-        listMap: { [id: number]: CascaderItem[] };
         /** 获取列表数据 */
         fetchList: <T extends CascaderItem>(item: T) => T[] | Promise<T[]>;
     };

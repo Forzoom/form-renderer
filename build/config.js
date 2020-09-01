@@ -29,7 +29,7 @@ module.exports = exports = [
             vue(),
             commonjs(),
             babel({
-                exclude: 'node_modules/**',
+                // exclude: 'node_modules/**',
                 extensions,
             }),
         ],
@@ -54,7 +54,7 @@ module.exports = exports = [
             vue(),
             commonjs(),
             babel({
-                exclude: 'node_modules/**',
+                // exclude: 'node_modules/**',
                 extensions,
             }),
         ],
@@ -79,7 +79,7 @@ module.exports = exports = [
             vue(),
             commonjs(),
             babel({
-                exclude: 'node_modules/**',
+                // exclude: 'node_modules/**',
                 extensions,
             }),
         ],

@@ -14,7 +14,11 @@
             @finish="onFinish">
         </WechatUploader>
         <div class="uploader-mock-background" :style="backgroundStyle">
-            <p><i class="icon">&#xe684;</i></p>
+            <p>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#iconxiangji1"></use>
+                </svg>
+            </p>
             <p>{{hint}}</p>
         </div>
     </div>

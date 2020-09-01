@@ -1,3 +1,4 @@
+import './lib/font.js';
 export { default as Renderer } from './js/renderer.vue';
 export { default as ItemButtonGroup } from './js/sections/buttonGroup.vue';
 export { default as ItemCascader } from './js/sections/cascader.vue';

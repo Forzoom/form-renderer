@@ -48,8 +48,9 @@ export default {
          */
         validateRule: function() {
             const rule = {};
-            for (const page of this.meta) {
-                for (let si = 0, len = page.sections.length; si < len; si++) {
+            for (let pi = 0, plen = this.meta.length; pi < plen; pi++) {
+                const page = this.meta[pi];
+                for (let si = 0, slen = page.sections.length; si < slen; si++) {
                     const section = page.sections[si];
                     rule[section.key] = {};
                     if (section.validates) {
@@ -114,7 +115,8 @@ export default {
             // 检查是否可以进入下一页
             const sections = this.meta[this.pageIndex].sections;
             if (sections) {
-                for (const section of sections) {
+                for (let i = 0, len = sections.length; i < len; i++) {
+                    const section = sections[i];
                     const value = this.innerForm[section.key];
                     const ruleMap = this.validateRule[section.key];
                     // 对于所有的trigger都处理
@@ -209,6 +211,13 @@ export default {
 
 
 .form-renderer {
+    .icon {
+       width: 1em; height: 1em;
+       vertical-align: -0.15em;
+       fill: currentColor;
+       overflow: hidden;
+    }
+
     .clearfix {
         &:before,
         &:after {
