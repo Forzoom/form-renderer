@@ -1,8 +1,6 @@
 ### 问题
 
-1. 删除vue-property-decorator的引入
-2. 删除@forzoom/uploader的引入
-3. Cascader的fetchList和listMap和itemMap不相符的问题
+1. 不使用SFC方式
 
 cascader的finish需要更加灵活
 依赖于van-popup

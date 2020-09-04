@@ -183,7 +183,6 @@ export default {
 </script>
 <style lang="less">
 
-
 .form-renderer {
     .icon {
        width: 1em; height: 1em;
