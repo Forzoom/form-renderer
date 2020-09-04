@@ -8,3 +8,4 @@ export { default as ItemSelect } from './js/sections/select.vue';
 export { default as ItemTextarea } from './js/sections/textarea.vue';
 export { default as ItemTitle } from './js/sections/title.vue';
 export { default as ItemUploader } from './js/sections/uploader.vue';
+export { default as ItemMultiUploader } from './js/sections/multiUploader.vue';

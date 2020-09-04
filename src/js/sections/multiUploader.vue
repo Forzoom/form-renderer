@@ -1,23 +1,38 @@
 <template>
 
-    <div class="item-multi-uploader clearfix">
-        <WechatUploader
-            ref="uploader"
-            :size="size"
-            :can-modify="true"
-            @add="onAdd"
-            @remove="onRemove"
-            @load="onLoad"
-            @finish="onFinish">
-        </WechatUploader>
+    <div class="item-multi-uploader">
+        <ItemTitle :title="title" :titleHint="titleHint" />
+        <div class="clearfix">
+            <WechatUploader
+                ref="uploader"
+                :size="size"
+                :can-modify="true"
+                @add="onAdd"
+                @remove="onRemove"
+                @load="onLoad"
+                @finish="onFinish">
+            </WechatUploader>
+        </div>
     </div>
 
 </template>
 <script lang="js">
+import ItemTitle from './title.vue';
+
 export default {
     name: 'ItemMultiUploader',
 
+    components: {
+        ItemTitle,
+    },
+
     props: {
+        /** title */
+        title: { type: String },
+
+        /** titleHint */
+        titleHint: { type: String },
+
         /** 数据 */
         value: {},
 

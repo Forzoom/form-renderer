@@ -1,11 +1,12 @@
 <template>
 
     <div class="item-button-group">
-        <div class="team-level-wrap clearfix">
-            <div class="team-level-item fl"
-                style="text-align: left"
-                v-for="(option, index) in options"
-                :key="index">
+        <ItemTitle :title="title" :titleHint="titleHint" />
+        <div class="clearfix">
+            <div v-for="(option, index) in options"
+                :key="index"
+                class="item-button-item fl"
+                style="text-align: left">
                 <MobileButton class="team-level"
                     :class="{selected: value == option.value}"
                     name="level-selected"
@@ -19,13 +20,24 @@
 
 </template>
 <script lang="js">
+import ItemTitle from './title.vue';
 
 export default {
     name: 'ItemButtonGroup',
 
+    components: {
+        ItemTitle,
+    },
+
     props: {
         /** 内容 */
         value: {},
+
+        /** title */
+        title: { type: String },
+
+        /** titleHint */
+        titleHint: { type: String },
 
         options: { required: true, type: Array },
         readonly: { type: Boolean, default: false },
@@ -50,12 +62,12 @@ export default {
 @import "../../lib/style/mixins.less";
 
 .item-button-group {
-    .team-level-item {
+    .item-button-item {
         text-align: center;
         margin-right: 10px;
         margin-bottom: 5px;
     }
-    .team-level-item:last-of-type {
+    .item-button-item:last-of-type {
         margin-right: 0;
     }
 }

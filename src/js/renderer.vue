@@ -1,29 +1,8 @@
 <script lang="js">
-import ItemTitle from './sections/title.vue';
-import ItemInput from './sections/input.vue';
-import ItemSelect from './sections/select.vue';
-import ItemCascader from './sections/cascader.vue';
-import ItemList from './sections/list.vue';
-import ItemButtonGroup from './sections/buttonGroup.vue';
-import ItemUploader from './sections/uploader.vue';
-import ItemTextarea from './sections/textarea.vue';
-import ItemMultiUploader from './sections/multiUploader.vue';
 import { isUndef, checkValidate } from './utils';
 
 export default {
     name: 'Renderer',
-
-    components: {
-        ItemTitle,
-        ItemInput,
-        ItemSelect,
-        ItemCascader,
-        ItemList,
-        ItemButtonGroup,
-        ItemUploader,
-        ItemTextarea,
-        ItemMultiUploader,
-    },
 
     props: {
         meta: { type: Array, default() { return []; } },
@@ -137,18 +116,19 @@ export default {
             return true;
         },
 
+        /**
+         * 提交前的最后操作，主要是uploader将未上传的文件进行上传
+         */
         beforeSubmit: async function() {
             for (let pi = 0, plen = this.meta.length; pi < plen; pi++) {
                 const meta = this.meta[pi];
                 for (let i = 0, len = meta.sections.length; i < len; i++) {
                     const section = meta.sections[i];
-                    if (section.type === 'ItemMultiUploader') {
-                        const $el = this.$refs[section.key];
+                    const $el = this.$refs[section.key];
+                    // @ts-ignore
+                    if ($el && $el.beforeSubmit) {
                         // @ts-ignore
-                        if ($el && $el.beforeSubmit) {
-                            // @ts-ignore
-                            await $el.beforeSubmit();
-                        }
+                        await $el.beforeSubmit();
                     }
                 }
             }
@@ -158,12 +138,6 @@ export default {
     render: function(h) {
         const children = this.meta[this.pageIndex].sections.map((section) => {
             return [
-                section.titleComponent ? h('ItemTitle', {
-                    props: {
-                        title: section.props?.title,
-                        titleHint: section.props?.titleHint,
-                    },
-                }) : null,
                 h(section.type, {
                     ref: section.key,
                     props: {

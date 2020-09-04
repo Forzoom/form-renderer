@@ -1,7 +1,9 @@
 <template>
 
-    <div class="item-cascader" :class="{'is-error': !isValidate}">
-        <div class="item-cascader__inner" :class="{placeholder: name.length === 0}" @click="onClickPlaceholder">
+    <div class="item-cascader__wrap">
+        <ItemTitle :title="title" :titleHint="titleHint" />
+
+        <div class="item-cascader" :class="{placeholder: name.length === 0, 'is-error': !isValidate}" @click="onClickPlaceholder">
             {{name || placeholder}}
         </div>
 
@@ -15,15 +17,23 @@
 </template>
 <script lang="js">
 import Cascader from '../components/cascader.vue';
+import ItemTitle from './title.vue';
 
 export default {
     name: 'ItemCascader',
 
     components: {
+        ItemTitle,
         Cascader,
     },
 
     props: {
+        /** title */
+        title: { type: String },
+
+        /** titleHint */
+        titleHint: { type: String },
+
         value: { type: Array, default() { return []; } },
         placeholder: { type: String, default: '请选择' },
         fetchList: { required: true, type: Function },
@@ -75,15 +85,13 @@ export default {
 .item-cascader {
     background-color: #f2f2f2;
     border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    line-height: 25px;
     &.is-error {
         box-shadow: 0 0 1px 1px @color-red;
     }
-    &__inner {
-        padding: 10px 15px;
-        font-size: 14px;
-        line-height: 25px;
-    }
-    .placeholder {
+    &.placeholder {
         color: #c8c8c8;
     }
 }

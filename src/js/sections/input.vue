@@ -1,6 +1,7 @@
 <template>
 
     <div>
+        <ItemTitle :title="title" :titleHint="titleHint" />
         <input v-if="type == 'text'"
             class="item-input"
             :class="{ 'is-error': !isValidate }"
@@ -23,11 +24,22 @@
 
 </template>
 <script lang="js">
+import ItemTitle from './title.vue';
 
 export default {
     name: 'ItemInput',
 
+    components: {
+        ItemTitle,
+    },
+
     props: {
+        /** title */
+        title: { type: String },
+
+        /** titleHint */
+        titleHint: { type: String },
+
         // 内容
         value: {},
 

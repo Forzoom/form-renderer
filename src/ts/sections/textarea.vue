@@ -1,20 +1,31 @@
 <template>
-    <div class="item-textarea" :class="{'is-error': !isValidate}">
-        <textarea class="textarea"
-            v-model="content"
-            :placeholder="placeholder"
-            rows="6">
-        </textarea>
-        <div v-if="max" class="length">{{content.length}}/{{max}}</div>
+    <div class="item-textarea__wrap">
+        <ItemTitle :title="title" :titleHint="titleHint" />
+        <div class="item-textarea" :class="{'is-error': !isValidate}">
+            <textarea class="textarea"
+                v-model="content"
+                :placeholder="placeholder"
+                rows="6">
+            </textarea>
+            <div v-if="max" class="length">{{content.length}}/{{max}}</div>
+        </div>
     </div>
 </template>
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import ItemTitle from './title.vue';
 
 @Component({
     name: 'ItemTextarea',
+    components: {
+        ItemTitle,
+    },
 })
 export default class ItemTextarea extends Vue {
+    /** title */
+    @Prop({ type: String }) public title?: string;
+    /** titleHint */
+    @Prop({ type: String }) public titleHint?: string;
     /** 数据 */
     @Prop() public value!: any;
     /** 占位 */

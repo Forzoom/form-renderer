@@ -1,31 +1,42 @@
 <template>
-    <div class="item-select" :class="{'is-error': !isValidate}">
-        <div class="single-line-left">
-            <slot name="left"></slot>
-        </div>
-        <div class="single-line-right">
-            <slot name="right"></slot>
-        </div>
-        <div class="single-line-center-wrapper overflow">
-            <select v-model="content" class="select" :class="{placeholder: value == null || value == ''}" :disabled="disabled">
-                <option value="">{{placeholder}}</option>
-                <option v-for="(option, index) in options"
-                    :key="index"
-                    :value="option.value">
-                    {{option.text}}
-                </option>
-            </select>
+    <div class="item-select__wrap">
+        <ItemTitle :title="title" :titleHint="titleHint" />
+        <div class="item-select" :class="{'is-error': !isValidate}">
+            <div class="single-line-left">
+                <slot name="left"></slot>
+            </div>
+            <div class="single-line-right">
+                <slot name="right"></slot>
+            </div>
+            <div class="single-line-center-wrapper overflow">
+                <select v-model="content" class="select" :class="{placeholder: value == null || value == ''}" :disabled="disabled">
+                    <option value="">{{placeholder}}</option>
+                    <option v-for="(option, index) in options"
+                        :key="index"
+                        :value="option.value">
+                        {{option.text}}
+                    </option>
+                </select>
+            </div>
         </div>
     </div>
 </template>
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { ValueText } from 'types/form';
+import ItemTitle from './title.vue';
 
 @Component({
     name: 'ItemSelect',
+    components: {
+        ItemTitle,
+    },
 })
 export default class ItemSelect extends Vue {
+    /** title */
+    @Prop({ type: String }) public title?: string;
+    /** titleHint */
+    @Prop({ type: String }) public titleHint?: string;
     /** 内容 */
     @Prop() public value!: any;
     @Prop({ type: String }) public name!: string;

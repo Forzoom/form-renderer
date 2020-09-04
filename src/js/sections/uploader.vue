@@ -51,6 +51,9 @@ export default {
         };
     },
 
+    computed: {},
+    watch: {},
+
     methods: {
         /**
          * 添加二维码

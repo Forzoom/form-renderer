@@ -1,10 +1,11 @@
 <template>
     <div class="item-button-group">
-        <div class="team-level-wrap clearfix">
-            <div class="team-level-item fl"
-                style="text-align: left"
-                v-for="(option, index) in options"
-                :key="index">
+        <ItemTitle :title="title" :titleHint="titleHint" />
+        <div class="clearfix">
+            <div v-for="(option, index) in options"
+                :key="index"
+                class="item-button-item fl"
+                style="text-align: left">
                 <MobileButton class="team-level"
                     :class="{selected: value == option.value}"
                     name="level-selected"
@@ -20,13 +21,21 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { ValueText } from 'types/form';
+import ItemTitle from './title.vue';
 
 @Component({
     name: 'ItemButtonGroup',
+    components: {
+        ItemTitle,
+    },
 })
 export default class ItemButtonGroup extends Vue {
     /** 内容 */
     @Prop() public value!: any;
+    /** title */
+    @Prop({ type: String }) public title?: string;
+    /** titleHint */
+    @Prop({ type: String }) public titleHint?: string;
     @Prop({ required: true, type: Array }) public options!: ValueText[];
     @Prop({ type: Boolean, default: false }) public readonly!: boolean;
 
@@ -40,12 +49,12 @@ export default class ItemButtonGroup extends Vue {
 @import "../../lib/style/mixins.less";
 
 .item-button-group {
-    .team-level-item {
+    .item-button-item {
         text-align: center;
         margin-right: 10px;
         margin-bottom: 5px;
     }
-    .team-level-item:last-of-type {
+    .item-button-item:last-of-type {
         margin-right: 0;
     }
 }

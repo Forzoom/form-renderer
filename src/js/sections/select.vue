@@ -1,31 +1,45 @@
 <template>
 
-    <div class="item-select" :class="{'is-error': !isValidate}">
-        <div class="single-line-left">
-            <slot name="left"></slot>
-        </div>
-        <div class="single-line-right">
-            <slot name="right"></slot>
-        </div>
-        <div class="single-line-center-wrapper overflow">
-            <select v-model="content" class="select" :class="{placeholder: value == null || value == ''}" :disabled="disabled">
-                <option value="">{{placeholder}}</option>
-                <option v-for="(option, index) in options"
-                    :key="index"
-                    :value="option.value">
-                    {{option.text}}
-                </option>
-            </select>
+    <div class="item-select__wrap">
+        <ItemTitle :title="title" :titleHint="titleHint" />
+        <div class="item-select" :class="{'is-error': !isValidate}">
+            <div class="single-line-left">
+                <slot name="left"></slot>
+            </div>
+            <div class="single-line-right">
+                <slot name="right"></slot>
+            </div>
+            <div class="single-line-center-wrapper overflow">
+                <select v-model="content" class="select" :class="{placeholder: value == null || value == ''}" :disabled="disabled">
+                    <option value="">{{placeholder}}</option>
+                    <option v-for="(option, index) in options"
+                        :key="index"
+                        :value="option.value">
+                        {{option.text}}
+                    </option>
+                </select>
+            </div>
         </div>
     </div>
 
 </template>
 <script lang="js">
+import ItemTitle from './title.vue';
 
 export default {
     name: 'ItemSelect',
 
+    components: {
+        ItemTitle
+    },
+
     props: {
+        /** title */
+        title: { type: String },
+
+        /** titleHint */
+        titleHint: { type: String },
+
         /** 内容 */
         value: {},
 

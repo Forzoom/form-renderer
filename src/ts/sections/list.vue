@@ -1,5 +1,6 @@
 <template>
     <div class="item-list">
+        <ItemTitle :title="title" :titleHint="titleHint" />
         <div class="item-list__inner" :class="{placeholder: isPlaceholder}" @click="onClickSubject">
             {{valueStr}}
         </div>
@@ -11,15 +12,20 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { ValueText } from 'types/form';
+import ItemTitle from './title.vue';
 // import ListPopup from '@/components/popup/listPopup.vue';
 
 @Component({
     name: 'ItemList',
-    // components: {
-    //     ListPopup,
-    // },
+    components: {
+        ItemTitle,
+    },
 })
 export default class ItemList extends Vue {
+    /** title */
+    @Prop({ type: String }) public title?: string;
+    /** titleHint */
+    @Prop({ type: String }) public titleHint?: string;
     @Prop() public value: any;
     @Prop() public options?: ValueText[] | (() => ValueText[]);
     @Prop({ type: Boolean, default: false }) public multiple!: boolean;

@@ -1,21 +1,35 @@
 <template>
 
-    <div class="item-textarea" :class="{'is-error': !isValidate}">
-        <textarea class="textarea"
-            v-model="content"
-            :placeholder="placeholder"
-            rows="6">
-        </textarea>
-        <div v-if="max" class="length">{{content.length}}/{{max}}</div>
+    <div class="item-textarea__wrap">
+        <ItemTitle :title="title" :titleHint="titleHint" />
+        <div class="item-textarea" :class="{'is-error': !isValidate}">
+            <textarea class="textarea"
+                v-model="content"
+                :placeholder="placeholder"
+                rows="6">
+            </textarea>
+            <div v-if="max" class="length">{{content.length}}/{{max}}</div>
+        </div>
     </div>
 
 </template>
 <script lang="js">
+import ItemTitle from './title.vue';
 
 export default {
     name: 'ItemTextarea',
 
+    components: {
+        ItemTitle,
+    },
+
     props: {
+        /** title */
+        title: { type: String },
+
+        /** titleHint */
+        titleHint: { type: String },
+
         /** 数据 */
         value: {},
 

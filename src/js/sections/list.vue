@@ -1,6 +1,7 @@
 <template>
 
     <div class="item-list">
+        <ItemTitle :title="title" :titleHint="titleHint" />
         <div class="item-list__inner" :class="{placeholder: isPlaceholder}" @click="onClickSubject">
             {{valueStr}}
         </div>
@@ -10,13 +11,24 @@
 
 </template>
 <script lang="js">
+import ItemTitle from './title.vue';
 
 // import ListPopup from '@/components/popup/listPopup.vue';
 
 export default {
     name: 'ItemList',
 
+    components: {
+        ItemTitle,
+    },
+
     props: {
+        /** title */
+        title: { type: String },
+
+        /** titleHint */
+        titleHint: { type: String },
+
         value: {},
         options: {},
         multiple: { type: Boolean, default: false },

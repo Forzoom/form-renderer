@@ -1,5 +1,6 @@
 <template>
     <div>
+        <ItemTitle :title="title" :titleHint="titleHint" />
         <input v-if="type == 'text'"
             class="item-input"
             :class="{ 'is-error': !isValidate }"
@@ -22,11 +23,19 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import ItemTitle from './title.vue';
 
 @Component({
     name: 'ItemInput',
+    components: {
+        ItemTitle,
+    },
 })
 export default class ItemInput extends Vue {
+    /** title */
+    @Prop({ type: String }) public title?: string;
+    /** titleHint */
+    @Prop({ type: String }) public titleHint?: string;
     // 内容
     @Prop() public value!: any;
     @Prop({ type: String }) public name!: any;

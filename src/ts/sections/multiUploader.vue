@@ -1,14 +1,17 @@
 <template>
-    <div class="item-multi-uploader clearfix">
-        <WechatUploader
-            ref="uploader"
-            :size="size"
-            :can-modify="true"
-            @add="onAdd"
-            @remove="onRemove"
-            @load="onLoad"
-            @finish="onFinish">
-        </WechatUploader>
+    <div class="item-multi-uploader">
+        <ItemTitle :title="title" :titleHint="titleHint" />
+        <div class="clearfix">
+            <WechatUploader
+                ref="uploader"
+                :size="size"
+                :can-modify="true"
+                @add="onAdd"
+                @remove="onRemove"
+                @load="onLoad"
+                @finish="onFinish">
+            </WechatUploader>
+        </div>
     </div>
 </template>
 
@@ -16,11 +19,19 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { WechatImage, WechatUploaderComponent } from '@forzoom/uploader';
 import { ImageInfo } from 'types/form';
+import ItemTitle from './title.vue';
 
 @Component({
     name: 'ItemMultiUploader',
+    components: {
+        ItemTitle,
+    },
 })
 export default class ItemMultiUploader extends Vue {
+    /** title */
+    @Prop({ type: String }) public title?: string;
+    /** titleHint */
+    @Prop({ type: String }) public titleHint?: string;
     /** 数据 */
     @Prop() public value?: ImageInfo[];
     @Prop({ type: Number, default: 9 }) public size!: number;
