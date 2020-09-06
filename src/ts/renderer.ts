@@ -1,14 +1,14 @@
-<script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { FormPageMeta, ValidateRule } from '../../types/form';
 import { isUndef, checkValidate } from './utils';
+import '../lib/style/features.less';
 
 @Component({
     name: 'Renderer',
 })
 export default class FormRenderer extends Vue {
-    @Prop({ type: Array, default() { return []; } }) public meta!: FormPageMeta[];
+    @Prop({ type: Array, default() { return []; } }) public meta!: FormPageMeta<any>[];
     @Prop({ type: Object }) public form: any;
 
     /**
@@ -45,6 +45,11 @@ export default class FormRenderer extends Vue {
             }
         }
         return rule;
+    }
+
+    @Watch('$props.form')
+    public onFormChange() {
+        this.innerForm = this.form;
     }
 
     /**
@@ -174,27 +179,3 @@ export default class FormRenderer extends Vue {
         }
     }
 }
-</script>
-
-<style lang="less">
-
-.form-renderer {
-    .icon {
-       width: 1em; height: 1em;
-       vertical-align: -0.15em;
-       fill: currentColor;
-       overflow: hidden;
-    }
-
-    .clearfix {
-        &:before,
-        &:after {
-            content: '';
-            display: table;
-        }
-        &:after {
-            clear: both;
-        }
-    }
-}
-</style>

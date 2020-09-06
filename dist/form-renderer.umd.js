@@ -1,8 +1,20 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('core-js/modules/es.array.map'), require('core-js/modules/es.symbol'), require('core-js/modules/es.symbol.description'), require('core-js/modules/es.symbol.async-iterator'), require('core-js/modules/es.symbol.iterator'), require('core-js/modules/es.symbol.to-string-tag'), require('core-js/modules/es.array.for-each'), require('core-js/modules/es.array.iterator'), require('core-js/modules/es.array.reverse'), require('core-js/modules/es.array.slice'), require('core-js/modules/es.date.to-string'), require('core-js/modules/es.function.name'), require('core-js/modules/es.json.to-string-tag'), require('core-js/modules/es.math.to-string-tag'), require('core-js/modules/es.object.create'), require('core-js/modules/es.object.define-property'), require('core-js/modules/es.object.get-prototype-of'), require('core-js/modules/es.object.set-prototype-of'), require('core-js/modules/es.object.to-string'), require('core-js/modules/es.promise'), require('core-js/modules/es.regexp.to-string'), require('core-js/modules/es.string.iterator'), require('core-js/modules/web.dom-collections.for-each'), require('core-js/modules/web.dom-collections.iterator'), require('core-js/modules/es.array.is-array')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'core-js/modules/es.array.map', 'core-js/modules/es.symbol', 'core-js/modules/es.symbol.description', 'core-js/modules/es.symbol.async-iterator', 'core-js/modules/es.symbol.iterator', 'core-js/modules/es.symbol.to-string-tag', 'core-js/modules/es.array.for-each', 'core-js/modules/es.array.iterator', 'core-js/modules/es.array.reverse', 'core-js/modules/es.array.slice', 'core-js/modules/es.date.to-string', 'core-js/modules/es.function.name', 'core-js/modules/es.json.to-string-tag', 'core-js/modules/es.math.to-string-tag', 'core-js/modules/es.object.create', 'core-js/modules/es.object.define-property', 'core-js/modules/es.object.get-prototype-of', 'core-js/modules/es.object.set-prototype-of', 'core-js/modules/es.object.to-string', 'core-js/modules/es.promise', 'core-js/modules/es.regexp.to-string', 'core-js/modules/es.string.iterator', 'core-js/modules/web.dom-collections.for-each', 'core-js/modules/web.dom-collections.iterator', 'core-js/modules/es.array.is-array'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('core-js/modules/es.array.map'), require('core-js/modules/es.symbol'), require('core-js/modules/es.symbol.description'), require('core-js/modules/es.symbol.async-iterator'), require('core-js/modules/es.symbol.iterator'), require('core-js/modules/es.symbol.to-string-tag'), require('core-js/modules/es.array.for-each'), require('core-js/modules/es.array.iterator'), require('core-js/modules/es.array.reverse'), require('core-js/modules/es.array.slice'), require('core-js/modules/es.date.to-string'), require('core-js/modules/es.function.name'), require('core-js/modules/es.json.to-string-tag'), require('core-js/modules/es.math.to-string-tag'), require('core-js/modules/es.object.create'), require('core-js/modules/es.object.get-prototype-of'), require('core-js/modules/es.object.set-prototype-of'), require('core-js/modules/es.object.to-string'), require('core-js/modules/es.promise'), require('core-js/modules/es.regexp.to-string'), require('core-js/modules/es.string.iterator'), require('core-js/modules/web.dom-collections.for-each'), require('core-js/modules/web.dom-collections.iterator'), require('core-js/modules/es.array.is-array')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'core-js/modules/es.array.map', 'core-js/modules/es.symbol', 'core-js/modules/es.symbol.description', 'core-js/modules/es.symbol.async-iterator', 'core-js/modules/es.symbol.iterator', 'core-js/modules/es.symbol.to-string-tag', 'core-js/modules/es.array.for-each', 'core-js/modules/es.array.iterator', 'core-js/modules/es.array.reverse', 'core-js/modules/es.array.slice', 'core-js/modules/es.date.to-string', 'core-js/modules/es.function.name', 'core-js/modules/es.json.to-string-tag', 'core-js/modules/es.math.to-string-tag', 'core-js/modules/es.object.create', 'core-js/modules/es.object.get-prototype-of', 'core-js/modules/es.object.set-prototype-of', 'core-js/modules/es.object.to-string', 'core-js/modules/es.promise', 'core-js/modules/es.regexp.to-string', 'core-js/modules/es.string.iterator', 'core-js/modules/web.dom-collections.for-each', 'core-js/modules/web.dom-collections.iterator', 'core-js/modules/es.array.is-array'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FormRenderer = {}));
 }(this, (function (exports) { 'use strict';
+
+  function __$styleInject(css) {
+      if (!css) return;
+
+      if (typeof window == 'undefined') return;
+      var style = document.createElement('style');
+      style.setAttribute('media', 'screen');
+
+      style.innerHTML = css;
+      document.head.appendChild(style);
+      return css;
+  }
 
   function _typeof(obj) {
     "@babel/helpers - typeof";
@@ -105,92 +117,18 @@
     return target;
   }
 
-  function _unsupportedIterableToArray(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(o);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-  }
-
-  function _arrayLikeToArray(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-
-    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-    return arr2;
-  }
-
-  function _createForOfIteratorHelper(o, allowArrayLike) {
-    var it;
-
-    if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
-      if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
-        if (it) o = it;
-        var i = 0;
-
-        var F = function () {};
-
-        return {
-          s: F,
-          n: function () {
-            if (i >= o.length) return {
-              done: true
-            };
-            return {
-              done: false,
-              value: o[i++]
-            };
-          },
-          e: function (e) {
-            throw e;
-          },
-          f: F
-        };
-      }
-
-      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }
-
-    var normalCompletion = true,
-        didErr = false,
-        err;
-    return {
-      s: function () {
-        it = o[Symbol.iterator]();
-      },
-      n: function () {
-        var step = it.next();
-        normalCompletion = step.done;
-        return step;
-      },
-      e: function (e) {
-        didErr = true;
-        err = e;
-      },
-      f: function () {
-        try {
-          if (!normalCompletion && it.return != null) it.return();
-        } finally {
-          if (didErr) throw err;
-        }
-      }
-    };
-  }
-
   function createCommonjsModule(fn, module) {
   	return module = { exports: {} }, fn(module, module.exports), module.exports;
   }
 
-  var runtime_1 = createCommonjsModule(function (module) {
+  var runtime = createCommonjsModule(function (module) {
     /**
      * Copyright (c) 2014-present, Facebook, Inc.
      *
      * This source code is licensed under the MIT license found in the
      * LICENSE file in the root directory of this source tree.
      */
-    var runtime = function (exports) {
+    !function (global) {
 
       var Op = Object.prototype;
       var hasOwn = Op.hasOwnProperty;
@@ -200,25 +138,23 @@
       var iteratorSymbol = $Symbol.iterator || "@@iterator";
       var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
       var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+      var runtime = global.regeneratorRuntime;
 
-      function define(obj, key, value) {
-        Object.defineProperty(obj, key, {
-          value: value,
-          enumerable: true,
-          configurable: true,
-          writable: true
-        });
-        return obj[key];
-      }
+      if (runtime) {
+        {
+          // If regeneratorRuntime is defined globally and we're in a module,
+          // make the exports object identical to regeneratorRuntime.
+          module.exports = runtime;
+        } // Don't bother evaluating the rest of this file if the runtime was
+        // already defined globally.
 
-      try {
-        // IE 8 has a broken Object.defineProperty that only works on DOM objects.
-        define({}, "");
-      } catch (err) {
-        define = function define(obj, key, value) {
-          return obj[key] = value;
-        };
-      }
+
+        return;
+      } // Define the runtime globally (as expected by generated code) as either
+      // module.exports (if we're in a module) or a new, empty object.
+
+
+      runtime = global.regeneratorRuntime =  module.exports ;
 
       function wrap(innerFn, outerFn, self, tryLocsList) {
         // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
@@ -231,7 +167,7 @@
         return generator;
       }
 
-      exports.wrap = wrap; // Try/catch helper to minimize deoptimizations. Returns a completion
+      runtime.wrap = wrap; // Try/catch helper to minimize deoptimizations. Returns a completion
       // record like context.tryEntries[i].completion. This interface could
       // have been (and was previously) designed to take a closure to be
       // invoked without arguments, but in all the cases we care about we
@@ -293,30 +229,33 @@
       var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
       GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
       GeneratorFunctionPrototype.constructor = GeneratorFunction;
-      GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"); // Helper for defining the .next, .throw, and .return methods of the
+      GeneratorFunctionPrototype[toStringTagSymbol] = GeneratorFunction.displayName = "GeneratorFunction"; // Helper for defining the .next, .throw, and .return methods of the
       // Iterator interface in terms of a single ._invoke method.
 
       function defineIteratorMethods(prototype) {
         ["next", "throw", "return"].forEach(function (method) {
-          define(prototype, method, function (arg) {
+          prototype[method] = function (arg) {
             return this._invoke(method, arg);
-          });
+          };
         });
       }
 
-      exports.isGeneratorFunction = function (genFun) {
+      runtime.isGeneratorFunction = function (genFun) {
         var ctor = typeof genFun === "function" && genFun.constructor;
         return ctor ? ctor === GeneratorFunction || // For the native GeneratorFunction constructor, the best we can
         // do is to check its .name property.
         (ctor.displayName || ctor.name) === "GeneratorFunction" : false;
       };
 
-      exports.mark = function (genFun) {
+      runtime.mark = function (genFun) {
         if (Object.setPrototypeOf) {
           Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
         } else {
           genFun.__proto__ = GeneratorFunctionPrototype;
-          define(genFun, toStringTagSymbol, "GeneratorFunction");
+
+          if (!(toStringTagSymbol in genFun)) {
+            genFun[toStringTagSymbol] = "GeneratorFunction";
+          }
         }
 
         genFun.prototype = Object.create(Gp);
@@ -327,13 +266,13 @@
       // meant to be awaited.
 
 
-      exports.awrap = function (arg) {
+      runtime.awrap = function (arg) {
         return {
           __await: arg
         };
       };
 
-      function AsyncIterator(generator, PromiseImpl) {
+      function AsyncIterator(generator) {
         function invoke(method, arg, resolve, reject) {
           var record = tryCatch(generator[method], generator, arg);
 
@@ -344,24 +283,32 @@
             var value = result.value;
 
             if (value && _typeof(value) === "object" && hasOwn.call(value, "__await")) {
-              return PromiseImpl.resolve(value.__await).then(function (value) {
+              return Promise.resolve(value.__await).then(function (value) {
                 invoke("next", value, resolve, reject);
               }, function (err) {
                 invoke("throw", err, resolve, reject);
               });
             }
 
-            return PromiseImpl.resolve(value).then(function (unwrapped) {
+            return Promise.resolve(value).then(function (unwrapped) {
               // When a yielded Promise is resolved, its final value becomes
               // the .value of the Promise<{value,done}> result for the
-              // current iteration.
+              // current iteration. If the Promise is rejected, however, the
+              // result for this iteration will be rejected with the same
+              // reason. Note that rejections of yielded Promises are not
+              // thrown back into the generator function, as is the case
+              // when an awaited Promise is rejected. This difference in
+              // behavior between yield and await is important, because it
+              // allows the consumer to decide what to do with the yielded
+              // rejection (swallow it and continue, manually .throw it back
+              // into the generator, abandon iteration, whatever). With
+              // await, by contrast, there is no opportunity to examine the
+              // rejection reason outside the generator function, so the
+              // only option is to throw it from the await expression, and
+              // let the generator function handle the exception.
               result.value = unwrapped;
               resolve(result);
-            }, function (error) {
-              // If a rejected Promise was yielded, throw the rejection back
-              // into the async generator function so it can be handled there.
-              return invoke("throw", error, resolve, reject);
-            });
+            }, reject);
           }
         }
 
@@ -369,7 +316,7 @@
 
         function enqueue(method, arg) {
           function callInvokeWithMethodAndArg() {
-            return new PromiseImpl(function (resolve, reject) {
+            return new Promise(function (resolve, reject) {
               invoke(method, arg, resolve, reject);
             });
           }
@@ -402,14 +349,13 @@
         return this;
       };
 
-      exports.AsyncIterator = AsyncIterator; // Note that simple async functions are implemented on top of
+      runtime.AsyncIterator = AsyncIterator; // Note that simple async functions are implemented on top of
       // AsyncIterator objects; they just return a Promise for the value of
       // the final result produced by the iterator.
 
-      exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
-        if (PromiseImpl === void 0) PromiseImpl = Promise;
-        var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl);
-        return exports.isGeneratorFunction(outerFn) ? iter // If outerFn is a generator, return the full iterator.
+      runtime.async = function (innerFn, outerFn, self, tryLocsList) {
+        var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList));
+        return runtime.isGeneratorFunction(outerFn) ? iter // If outerFn is a generator, return the full iterator.
         : iter.next().then(function (result) {
           return result.done ? result.value : iter.next();
         });
@@ -502,7 +448,6 @@
           context.delegate = null;
 
           if (context.method === "throw") {
-            // Note: ["return"] must be used for ES3 parsing compatibility.
             if (delegate.iterator["return"]) {
               // If the delegate iterator has a return method, give it a
               // chance to clean up.
@@ -572,7 +517,7 @@
 
 
       defineIteratorMethods(Gp);
-      define(Gp, toStringTagSymbol, "Generator"); // A Generator should always return itself as the iterator object when the
+      Gp[toStringTagSymbol] = "Generator"; // A Generator should always return itself as the iterator object when the
       // @@iterator function is called on it. Some browsers' implementations of the
       // iterator prototype chain incorrectly implement this, causing the Generator
       // object to not be returned from this call. This ensures that doesn't happen.
@@ -621,7 +566,7 @@
         this.reset(true);
       }
 
-      exports.keys = function (object) {
+      runtime.keys = function (object) {
         var keys = [];
 
         for (var key in object) {
@@ -688,7 +633,7 @@
         };
       }
 
-      exports.values = values;
+      runtime.values = values;
 
       function doneResult() {
         return {
@@ -879,32 +824,13 @@
 
           return ContinueSentinel;
         }
-      }; // Regardless of whether this script is executing as a CommonJS module
-      // or not, return the runtime object so that we can declare the variable
-      // regeneratorRuntime in the outer scope, which allows this module to be
-      // injected easily by `bin/regenerator --include-runtime script.js`.
-
-      return exports;
-    }( // If this script is executing as a CommonJS module, use module.exports
-    // as the regeneratorRuntime namespace. Otherwise create a new empty
-    // object. Either way, the resulting object will be used to initialize
-    // the regeneratorRuntime variable at the top of this file.
-     module.exports );
-
-    try {
-      regeneratorRuntime = runtime;
-    } catch (accidentalStrictMode) {
-      // This module should not be running in strict mode, so the above
-      // assignment should always work unless something is misconfigured. Just
-      // in case runtime.js accidentally runs in strict mode, we can escape
-      // strict mode using a global Function call. This could conceivably fail
-      // if a Content Security Policy forbids using Function, but in that case
-      // the proper solution is to fix the accidental strict mode problem. If
-      // you've misconfigured your bundler to force strict mode and applied a
-      // CSP to forbid Function, and you're not willing to fix either of those
-      // problems, please detail your unique predicament in a GitHub issue.
-      Function("r", "regeneratorRuntime = r")(runtime);
-    }
+      };
+    }( // In sloppy mode, unbound `this` refers to the global object, fallback to
+    // Function constructor if we're in global strict mode. That is sadly a form
+    // of indirect eval which violates Content Security Policy.
+    function () {
+      return this;
+    }() || Function("return this")());
   });
 
   /**
@@ -928,39 +854,32 @@
   }
   var isArray = Array.isArray || isType(name);
   function checkValidate(value, rules) {
-    var _iterator = _createForOfIteratorHelper(rules),
-        _step;
+    for (var i = 0, len = rules.length; i < len; i++) {
+      var rule = rules[i];
 
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var rule = _step.value;
+      if (rule.required && (value === '' || isUndef(value) || value.length === 0)) {
+        return rule;
+      } else if (rule.pattern && value && !rule.pattern.test(value)) {
+        return rule;
+      } else if (rule.max != null && value != null) {
+        var type = _typeof(value);
 
-        if (rule.required && (value === '' || isUndef(value) || value.length === 0)) {
+        if ((type == 'string' || isArray(value)) && value.length > rule.max || type == 'number' && value > rule.max) {
           return rule;
-        } else if (rule.pattern && value && !rule.pattern.test(value)) {
+        }
+      } else if (rule.min != null && value != null) {
+        var _type = _typeof(value);
+
+        if ((_type == 'string' || isArray(value)) && value.length < rule.min || _type == 'number' && value < rule.min) {
           return rule;
-        } else if (rule.max != null && value != null) {
-          var type = _typeof(value);
-
-          if ((type == 'string' || isArray(value)) && value.length > rule.max || type == 'number' && value > rule.max) {
-            return rule;
-          }
-        } else if (rule.min != null && value != null) {
-          var _type = _typeof(value);
-
-          if ((_type == 'string' || isArray(value)) && value.length < rule.min || _type == 'number' && value < rule.min) {
-            return rule;
-          }
         }
       }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
     }
   }
 
-  var script = {
+  __$styleInject(".form-renderer .icon {\n  width: 1em;\n  height: 1em;\n  vertical-align: -0.15em;\n  fill: currentColor;\n  overflow: hidden;\n}\n.form-renderer .clearfix:before,\n.form-renderer .clearfix:after {\n  content: '';\n  display: table;\n}\n.form-renderer .clearfix:after {\n  clear: both;\n}\n");
+
+  var renderer = {
     name: 'Renderer',
     props: {
       meta: {
@@ -1015,7 +934,11 @@
         return rule;
       }
     },
-    watch: {},
+    watch: {
+      '$props.form': function $propsForm() {
+        this.innerForm = this.form;
+      }
+    },
     methods: {
       /**
        * 进入前一页
@@ -1195,172 +1118,7 @@
     }
   };
 
-  function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
-      if (typeof shadowMode !== 'boolean') {
-          createInjectorSSR = createInjector;
-          createInjector = shadowMode;
-          shadowMode = false;
-      }
-      // Vue.extend constructor export interop.
-      const options = typeof script === 'function' ? script.options : script;
-      // render functions
-      if (template && template.render) {
-          options.render = template.render;
-          options.staticRenderFns = template.staticRenderFns;
-          options._compiled = true;
-          // functional template
-          if (isFunctionalTemplate) {
-              options.functional = true;
-          }
-      }
-      // scopedId
-      if (scopeId) {
-          options._scopeId = scopeId;
-      }
-      let hook;
-      if (moduleIdentifier) {
-          // server build
-          hook = function (context) {
-              // 2.3 injection
-              context =
-                  context || // cached call
-                      (this.$vnode && this.$vnode.ssrContext) || // stateful
-                      (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
-              // 2.2 with runInNewContext: true
-              if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-                  context = __VUE_SSR_CONTEXT__;
-              }
-              // inject component styles
-              if (style) {
-                  style.call(this, createInjectorSSR(context));
-              }
-              // register component module identifier for async chunk inference
-              if (context && context._registeredComponents) {
-                  context._registeredComponents.add(moduleIdentifier);
-              }
-          };
-          // used by ssr in case component is cached and beforeCreate
-          // never gets called
-          options._ssrRegister = hook;
-      }
-      else if (style) {
-          hook = shadowMode
-              ? function (context) {
-                  style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
-              }
-              : function (context) {
-                  style.call(this, createInjector(context));
-              };
-      }
-      if (hook) {
-          if (options.functional) {
-              // register for functional component in vue file
-              const originalRender = options.render;
-              options.render = function renderWithStyleInjection(h, context) {
-                  hook.call(context);
-                  return originalRender(h, context);
-              };
-          }
-          else {
-              // inject component registration as beforeCreate hook
-              const existing = options.beforeCreate;
-              options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
-          }
-      }
-      return script;
-  }
-
-  const isOldIE = typeof navigator !== 'undefined' &&
-      /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
-  function createInjector(context) {
-      return (id, style) => addStyle(id, style);
-  }
-  let HEAD;
-  const styles = {};
-  function addStyle(id, css) {
-      const group = isOldIE ? css.media || 'default' : id;
-      const style = styles[group] || (styles[group] = { ids: new Set(), styles: [] });
-      if (!style.ids.has(id)) {
-          style.ids.add(id);
-          let code = css.source;
-          if (css.map) {
-              // https://developer.chrome.com/devtools/docs/javascript-debugging
-              // this makes source maps inside style tags work properly in Chrome
-              code += '\n/*# sourceURL=' + css.map.sources[0] + ' */';
-              // http://stackoverflow.com/a/26603875
-              code +=
-                  '\n/*# sourceMappingURL=data:application/json;base64,' +
-                      btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) +
-                      ' */';
-          }
-          if (!style.element) {
-              style.element = document.createElement('style');
-              style.element.type = 'text/css';
-              if (css.media)
-                  style.element.setAttribute('media', css.media);
-              if (HEAD === undefined) {
-                  HEAD = document.head || document.getElementsByTagName('head')[0];
-              }
-              HEAD.appendChild(style.element);
-          }
-          if ('styleSheet' in style.element) {
-              style.styles.push(code);
-              style.element.styleSheet.cssText = style.styles
-                  .filter(Boolean)
-                  .join('\n');
-          }
-          else {
-              const index = style.ids.size - 1;
-              const textNode = document.createTextNode(code);
-              const nodes = style.element.childNodes;
-              if (nodes[index])
-                  style.element.removeChild(nodes[index]);
-              if (nodes.length)
-                  style.element.insertBefore(textNode, nodes[index]);
-              else
-                  style.element.appendChild(textNode);
-          }
-      }
-  }
-
-  /* script */
-  var __vue_script__ = script;
-  /* template */
-
-  /* style */
-
-  var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
-    if (!inject) return;
-    inject("data-v-330e6ade_0", {
-      source: ".form-renderer .icon {\n  width: 1em;\n  height: 1em;\n  vertical-align: -0.15em;\n  fill: currentColor;\n  overflow: hidden;\n}\n.form-renderer .clearfix:before,\n.form-renderer .clearfix:after {\n  content: '';\n  display: table;\n}\n.form-renderer .clearfix:after {\n  clear: both;\n}\n",
-      map: {
-        "version": 3,
-        "sources": ["renderer.vue"],
-        "names": [],
-        "mappings": "AAAA;EACE,UAAU;EACV,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,gBAAgB;AAClB;AACA;;EAEE,WAAW;EACX,cAAc;AAChB;AACA;EACE,WAAW;AACb",
-        "file": "renderer.vue",
-        "sourcesContent": [".form-renderer .icon {\n  width: 1em;\n  height: 1em;\n  vertical-align: -0.15em;\n  fill: currentColor;\n  overflow: hidden;\n}\n.form-renderer .clearfix:before,\n.form-renderer .clearfix:after {\n  content: '';\n  display: table;\n}\n.form-renderer .clearfix:after {\n  clear: both;\n}\n"]
-      },
-      media: undefined
-    });
-  };
-  /* scoped */
-
-
-  var __vue_scope_id__ = undefined;
-  /* module identifier */
-
-  var __vue_module_identifier__ = undefined;
-  /* functional template */
-
-  var __vue_is_functional_template__ = undefined;
-  /* style inject SSR */
-
-  /* style inject shadow dom */
-
-  var __vue_component__ = /*#__PURE__*/normalizeComponent({}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, createInjector, undefined, undefined);
-
-  exports.Renderer = __vue_component__;
+  exports.Renderer = renderer;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

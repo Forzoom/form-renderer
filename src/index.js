@@ -1,1 +1,1 @@
-export { default as Renderer } from './js/renderer.vue';
+export { default as Renderer } from './js/renderer.js';

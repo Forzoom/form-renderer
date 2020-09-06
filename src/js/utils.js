@@ -21,7 +21,8 @@ export function isType(name) {
 export const isArray = Array.isArray || isType(name);
 
 export function checkValidate(value, rules) {
-    for (const rule of rules) {
+    for (let i = 0, len = rules.length; i < len; i++) {
+        const rule = rules[i];
         if (rule.required && (value === '' || isUndef(value) || value.length === 0)) {
             return rule;
         } else if (rule.pattern && value && !rule.pattern.test(value)) {

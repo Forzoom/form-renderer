@@ -1,5 +1,5 @@
-<script lang="js">
 import { isUndef, checkValidate } from './utils';
+import '../lib/style/features.less';
 
 export default {
     name: 'Renderer',
@@ -48,7 +48,11 @@ export default {
         },
     },
 
-    watch: {},
+    watch: {
+        '$props.form': function() {
+            this.innerForm = this.form;
+        },
+    },
 
     methods: {
         /**
@@ -180,27 +184,3 @@ export default {
         }
     },
 };
-</script>
-<style lang="less">
-
-.form-renderer {
-    .icon {
-       width: 1em; height: 1em;
-       vertical-align: -0.15em;
-       fill: currentColor;
-       overflow: hidden;
-    }
-
-    .clearfix {
-        &:before,
-        &:after {
-            content: '';
-            display: table;
-        }
-        &:after {
-            clear: both;
-        }
-    }
-}
-
-</style>

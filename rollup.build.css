@@ -1,0 +1,15 @@
+.form-renderer .icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.form-renderer .clearfix:before,
+.form-renderer .clearfix:after {
+  content: '';
+  display: table;
+}
+.form-renderer .clearfix:after {
+  clear: both;
+}

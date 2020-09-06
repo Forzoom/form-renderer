@@ -1,12 +1,15 @@
 // config.js
 const commonjs = require('rollup-plugin-commonjs');
 const resolve = require('rollup-plugin-node-resolve');
-const babel = require('rollup-plugin-babel');
+const babel = require('@rollup/plugin-babel').default;
 const alias = require('rollup-plugin-alias');
-const vue = require('rollup-plugin-vue');
+const less = require('rollup-plugin-less');
 const path = require('path');
 
 const extensions = [ '.ts', '.js', '.vue' ];
+const lessOptions = {
+    insert: true,
+};
 
 module.exports = exports = [
     {
@@ -26,7 +29,7 @@ module.exports = exports = [
             resolve({
                 extensions,
             }),
-            vue(),
+            less(lessOptions),
             commonjs(),
             babel({
                 // exclude: 'node_modules/**',
@@ -51,7 +54,7 @@ module.exports = exports = [
                     { find: '@', replacement: path.join(__dirname, '../src') }
                 ],
             }),
-            vue(),
+            less(lessOptions),
             commonjs(),
             babel({
                 // exclude: 'node_modules/**',
@@ -76,7 +79,7 @@ module.exports = exports = [
                     { find: '@', replacement: path.join(__dirname, '../src') }
                 ],
             }),
-            vue(),
+            less(lessOptions),
             commonjs(),
             babel({
                 // exclude: 'node_modules/**',

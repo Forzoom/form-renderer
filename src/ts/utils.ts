@@ -23,7 +23,8 @@ export function isType<T>(name: string) {
 export const isArray: <T = any>(val: any) => val is T[] = Array.isArray || isType(name);
 
 export function checkValidate(value: any, rules: ValidateRule[]) {
-    for (const rule of rules) {
+    for (let i = 0, len = rules.length; i < len; i++) {
+        const rule = rules[i];
         if (rule.required && (value === '' || isUndef(value) || value.length === 0)) {
             return rule;
         } else if (rule.pattern && value && !rule.pattern.test(value)) {
