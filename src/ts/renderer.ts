@@ -1,6 +1,6 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
-import { FormPageMeta, ValidateRule } from '../../types/form';
+import { FormPageMeta, FormSection, ValidateRule } from '../../types/form';
 import { isUndef, checkValidate } from './utils';
 import '../lib/style/features.less';
 
@@ -8,7 +8,7 @@ import '../lib/style/features.less';
     name: 'Renderer',
 })
 export default class FormRenderer extends Vue {
-    @Prop({ type: Array, default() { return []; } }) public meta!: FormPageMeta<any>[];
+    @Prop({ type: Array, default() { return []; } }) public meta!: FormPageMeta<FormSection>[];
     @Prop({ type: Object }) public form: any;
 
     /**
@@ -104,9 +104,7 @@ export default class FormRenderer extends Vue {
                     const failRule = checkValidate(value, rules);
                     this.$set(this.isValidate, section.key, !failRule);
                     if (failRule) {
-                        if (failRule.message) {
-                            this.$emit('error', failRule.message);
-                        }
+                        this.$emit('error', section, failRule);
                         return false;
                     }
                 }
@@ -135,32 +133,51 @@ export default class FormRenderer extends Vue {
     }
 
     public render(h: CreateElement) {
-        const children = this.meta[this.pageIndex].sections.map((section) => {
+        const self = this;
+        const children = self.meta[self.pageIndex].sections
+        // 剔除不用显示的内容
+        .filter((section) => {
+            const visibleRules = section.visible;
+            // 没有visible定义情况下，可以显示
+            if (!visibleRules) {
+                return true;
+            }
+            // visible应该是一个数组
+            for (let i = 0, len = visibleRules.length; i < len; i++) {
+                const rule = visibleRules[i];
+                if ('eq' in rule && self.innerForm[rule.key] === rule.eq) {
+                    return true;
+                }
+            }
+        })
+        // 生成vnode
+        .map((section) => {
+            const value = self.innerForm[section.key];
             return [
                 h(section.type, {
                     ref: section.key,
                     props: {
-                        value: this.innerForm[section.key],
-                        isValidate: this.isValidate[section.key],
+                        value: section.encode ? section.encode(value) : value,
+                        isValidate: self.isValidate[section.key],
                         ...section.props,
                     },
                     on: {
                         input: (value: any) => {
-                            this.innerForm[section.key] = value;
-                            this.$emit('update:form', this.innerForm);
+                            self.innerForm[section.key] = section.decode ? section.decode(value) : value;
+                            self.$emit('update:form', self.innerForm);
 
                             // 当输入时，标记为正常
-                            this.$set(this.isValidate, section.key, true);
+                            self.$set(self.isValidate, section.key, true);
                         },
                         blur: () => {
                             // 触发validate
-                            const ruleMap = this.validateRule[section.key];
+                            const ruleMap = self.validateRule[section.key];
                             if (ruleMap) {
-                                const value = this.innerForm[section.key];
+                                const value = self.innerForm[section.key];
                                 const failRule = checkValidate(value, ruleMap['blur'] || []);
-                                this.$set(this.isValidate, section.key, !failRule);
-                                if (failRule && failRule.message) {
-                                    this.$emit('error', failRule.message);
+                                self.$set(self.isValidate, section.key, !failRule);
+                                if (failRule) {
+                                    self.$emit('error', section, failRule);
                                 }
                             }
                         },

@@ -10,6 +10,7 @@ function __$styleInject(css) {
     return css;
 }
 
+import 'core-js/modules/es.array.filter';
 import 'core-js/modules/es.array.map';
 import 'core-js/modules/es.symbol';
 import 'core-js/modules/es.symbol.description';
@@ -872,28 +873,46 @@ function isType(name) {
   };
 }
 var isArray = Array.isArray || isType(name);
+/**
+ * 检测值是否匹配规则，如果匹配，返回null，否则返回匹配失败的规则
+ * @param value 值
+ * @param rules 检查规则
+ * @returns {ValidateRule | null}
+ */
+
 function checkValidate(value, rules) {
   for (var i = 0, len = rules.length; i < len; i++) {
     var rule = rules[i];
 
     if (rule.required && (value === '' || isUndef(value) || value.length === 0)) {
+      // 检查require
       return rule;
     } else if (rule.pattern && value && !rule.pattern.test(value)) {
+      // 检查pattern
       return rule;
     } else if (rule.max != null && value != null) {
+      // 检查max
       var type = _typeof(value);
 
       if ((type == 'string' || isArray(value)) && value.length > rule.max || type == 'number' && value > rule.max) {
         return rule;
       }
     } else if (rule.min != null && value != null) {
+      // 检查min
       var _type = _typeof(value);
 
       if ((_type == 'string' || isArray(value)) && value.length < rule.min || _type == 'number' && value < rule.min) {
         return rule;
       }
+    } else if (rule.fn != null && value != null) {
+      // 检查fn
+      if (!rule.fn(value)) {
+        return rule;
+      }
     }
   }
+
+  return null;
 }
 
 __$styleInject(".form-renderer .icon {\n  width: 1em;\n  height: 1em;\n  vertical-align: -0.15em;\n  fill: currentColor;\n  overflow: hidden;\n}\n.form-renderer .clearfix:before,\n.form-renderer .clearfix:after {\n  content: '';\n  display: table;\n}\n.form-renderer .clearfix:after {\n  clear: both;\n}\n");
@@ -1013,10 +1032,7 @@ var renderer = {
             this.$set(this.isValidate, section.key, !failRule);
 
             if (failRule) {
-              if (failRule.message) {
-                this.$emit('error', failRule.message);
-              }
-
+              this.$emit('error', section, failRule);
               return false;
             }
           }
@@ -1090,36 +1106,50 @@ var renderer = {
     }()
   },
   render: function render(h) {
-    var _this = this;
+    var self = this;
+    var children = self.meta[self.pageIndex].sections // 剔除不用显示的内容
+    .filter(function (section) {
+      var visibleRules = section.visible; // 没有visible定义情况下，可以显示
 
-    var children = this.meta[this.pageIndex].sections.map(function (section) {
+      if (!visibleRules) {
+        return true;
+      } // visible应该是一个数组
+
+
+      for (var i = 0, len = visibleRules.length; i < len; i++) {
+        var rule = visibleRules[i];
+
+        if ('eq' in rule && self.innerForm[rule.key] === rule.eq) {
+          return true;
+        }
+      }
+    }) // 生成vnode
+    .map(function (section) {
+      var value = self.innerForm[section.key];
       return [h(section.type, {
         ref: section.key,
         props: _objectSpread2({
-          value: _this.innerForm[section.key],
-          isValidate: _this.isValidate[section.key]
+          value: section.encode ? section.encode(value) : value,
+          isValidate: self.isValidate[section.key]
         }, section.props),
         on: {
           input: function input(value) {
-            _this.innerForm[section.key] = value;
+            self.innerForm[section.key] = section.decode ? section.decode(value) : value;
+            self.$emit('update:form', self.innerForm); // 当输入时，标记为正常
 
-            _this.$emit('update:form', _this.innerForm); // 当输入时，标记为正常
-
-
-            _this.$set(_this.isValidate, section.key, true);
+            self.$set(self.isValidate, section.key, true);
           },
           blur: function blur() {
             // 触发validate
-            var ruleMap = _this.validateRule[section.key];
+            var ruleMap = self.validateRule[section.key];
 
             if (ruleMap) {
-              var value = _this.innerForm[section.key];
-              var failRule = checkValidate(value, ruleMap['blur'] || []);
+              var _value = self.innerForm[section.key];
+              var failRule = checkValidate(_value, ruleMap['blur'] || []);
+              self.$set(self.isValidate, section.key, !failRule);
 
-              _this.$set(_this.isValidate, section.key, !failRule);
-
-              if (failRule && failRule.message) {
-                _this.$emit('error', failRule.message);
+              if (failRule) {
+                self.$emit('error', section, failRule);
               }
             }
           }
