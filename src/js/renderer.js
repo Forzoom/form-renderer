@@ -91,12 +91,29 @@ export default {
             return this.pageIndex === this.meta.length - 1;
         },
 
+        _getSections: function(pageIndex, form) {
+            return this.meta[pageIndex].sections.filter((section) => {
+                const visibleRules = section.visible;
+                // 没有visible定义情况下，可以显示
+                if (!visibleRules) {
+                    return true;
+                }
+                // visible应该是一个数组
+                for (let i = 0, len = visibleRules.length; i < len; i++) {
+                    const rule = visibleRules[i];
+                    if ('eq' in rule && form[rule.key] === rule.eq) {
+                        return true;
+                    }
+                }
+            });
+        },
+
         /**
          * 检查所有规则
          */
         validate: function() {
             // 检查是否可以进入下一页
-            const sections = this.meta[this.pageIndex].sections;
+            const sections = this._getSections(this.pageIndex, this.innerForm);
             if (sections) {
                 for (let i = 0, len = sections.length; i < len; i++) {
                     const section = sections[i];
@@ -139,22 +156,7 @@ export default {
 
     render: function(h) {
         const self = this;
-        const children = self.meta[self.pageIndex].sections
-        // 剔除不用显示的内容
-        .filter((section) => {
-            const visibleRules = section.visible;
-            // 没有visible定义情况下，可以显示
-            if (!visibleRules) {
-                return true;
-            }
-            // visible应该是一个数组
-            for (let i = 0, len = visibleRules.length; i < len; i++) {
-                const rule = visibleRules[i];
-                if ('eq' in rule && self.innerForm[rule.key] === rule.eq) {
-                    return true;
-                }
-            }
-        })
+        const children = this._getSections(self.pageIndex, self.innerForm)
         // 生成vnode
         .map((section) => {
             const value = self.innerForm[section.key];

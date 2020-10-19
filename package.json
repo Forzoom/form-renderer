@@ -1,6 +1,6 @@
 {
   "name": "@forzoom/form-renderer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/form-renderer.cjs.js",
   "module": "dist/form-renderer.esm.js",
   "license": "MIT",
