@@ -884,7 +884,7 @@
         if ((_type == 'string' || isArray(value)) && value.length < rule.min || _type == 'number' && value < rule.min) {
           return rule;
         }
-      } else if (rule.fn != null && value != null) {
+      } else if (rule.fn != null) {
         // 检查fn
         if (!rule.fn(value)) {
           return rule;
