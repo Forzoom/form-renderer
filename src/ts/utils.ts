@@ -20,13 +20,13 @@ export function isType<T>(name: string) {
     };
 }
 
-export const isArray: <T = any>(val: any) => val is T[] = Array.isArray || isType(name);
+export const isArray: <T = any>(val: any) => val is T[] = Array.isArray || isType('Array');
 
 /**
  * 检测值是否匹配规则，如果匹配，返回null，否则返回匹配失败的规则
  * @param value 值
  * @param rules 检查规则
- * @returns {ValidateRule | null}
+ * @returns {ValidateRule | null} 失败的规则
  */
 export function checkValidate(value: any, rules: ValidateRule[]): ValidateRule | null {
     for (let i = 0, len = rules.length; i < len; i++) {
@@ -52,6 +52,14 @@ export function checkValidate(value: any, rules: ValidateRule[]): ValidateRule |
         } else if (rule.fn != null) {
             // 检查fn
             if (!rule.fn(value)) {
+                return rule;
+            }
+        } else if (rule.validator != null) {
+            // 只是针对于validator的同步形式的处理
+            let result: any = null;
+            const callback = (val: any) => { result = val; };
+            rule.validator(rule, value, callback);
+            if (result) {
                 return rule;
             }
         }

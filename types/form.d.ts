@@ -12,6 +12,8 @@ export interface ValidateRule {
     min?: number;
     /** 使用函数来检查 */
     fn?: (value: any) => boolean;
+    /** 配合旧async-validator中的内容 */
+    validator?: (rule: ValidateRule, value: string, callback: any) => void;
 }
 
 export interface VisibleRule {
@@ -27,9 +29,9 @@ export interface FormSection {
     type: string;
     key: string;
     props?: any;
-    /** 数据传递给组件时处理 */
+    /** 数据通过input参数传递给组件时处理 */
     encode?: any;
-    /** 数据写入form时处理 */
+    /** 数据通过$emit('input')传出时处理 */
     decode?: any;
     validates?: ValidateRule[];
     visible?: VisibleRule[];

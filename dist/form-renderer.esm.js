@@ -872,12 +872,12 @@ function isType(name) {
     return Object.prototype.toString.call(val) === "[object ".concat(name, "]");
   };
 }
-var isArray = Array.isArray || isType(name);
+var isArray = Array.isArray || isType('Array');
 /**
  * 检测值是否匹配规则，如果匹配，返回null，否则返回匹配失败的规则
  * @param value 值
  * @param rules 检查规则
- * @returns {ValidateRule | null}
+ * @returns {ValidateRule | null} 失败的规则
  */
 
 function checkValidate(value, rules) {
@@ -907,6 +907,19 @@ function checkValidate(value, rules) {
     } else if (rule.fn != null) {
       // 检查fn
       if (!rule.fn(value)) {
+        return rule;
+      }
+    } else if (rule.validator != null) {
+      // 只是针对于validator的同步形式的处理
+      var result = null;
+
+      var callback = function callback(val) {
+        result = val;
+      };
+
+      rule.validator(rule, value, callback);
+
+      if (result) {
         return rule;
       }
     }
@@ -1171,4 +1184,4 @@ var renderer = {
   }
 };
 
-export { renderer as Renderer };
+export { renderer as Renderer, checkValidate };

@@ -63,8 +63,10 @@ class Page extends Vue {
         return pages;
     }
 
-    public onError(msg: string) {
-        Toast(msg);
+    public onError(section: any, rule: any) {
+        if (rule.message) {
+            Toast(rule.message);
+        }
     }
 
     /**
@@ -85,6 +87,29 @@ class Page extends Vue {
         }
     }
 }
+```
+
+### 表单检查
+
+### 数据操作
+
+通过为`section`配置`encode`和`decode`参数，可以在数据传入/传出组件时对于数据进行操作。
+
+```typescript
+// @example 对从组件中传出的数据，也就是用户输入的“收货人姓名”，删除前后的空格
+const trim = (value: string) => value ? value.trim() : '';
+const section = {
+    type: 'CompactInput',
+    key: 'name',
+    props: {
+        placeholder: '收货人姓名',
+        textAlign: 'left',
+    },
+    decode: trim,
+    validates: [
+        { required: true, message: '请输入收货人姓名' },
+    ],
+};
 ```
 
 ### 自定义组件
