@@ -1,3 +1,7 @@
+#### 0.1.4
+
+1. feat: 放弃async/await写法
+
 #### 0.1.3
 
 1. feat: 导出checkValidate函数

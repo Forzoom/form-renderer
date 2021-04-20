@@ -138,19 +138,24 @@ export default {
         /**
          * 提交前的最后操作，主要是uploader将未上传的文件进行上传
          */
-        beforeSubmit: async function() {
+        beforeSubmit: function() {
+            let promises = [];
+
             for (let pi = 0, plen = this.meta.length; pi < plen; pi++) {
                 const meta = this.meta[pi];
                 for (let i = 0, len = meta.sections.length; i < len; i++) {
                     const section = meta.sections[i];
                     const $el = this.$refs[section.key];
-                    // @ts-ignore
                     if ($el && $el.beforeSubmit) {
-                        // @ts-ignore
-                        await $el.beforeSubmit();
+                        const result = $el.beforeSubmit();
+                        if (result instanceof Promise) {
+                            promises.push(result);
+                        }
                     }
                 }
             }
+
+            return Promise.all(promises);
         },
     },
 
